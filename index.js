@@ -113,7 +113,8 @@ app.get('/dashboard', (req, res) => {
     if (req.session.user && req.cookies.user_sid) {
         let user = req.session.user;
         console.log(user.email + " has logged in...");
-        res.render('./home.pug', {title:"The Title", message:"Welcome Back " + user.username});
+        res.render('./home.pug', {title:"The Title", message:"Welcome Home " + user.username, happinessBtn:"Increase Happiness", 
+        waterBtn:"Give Osmoe Water", foodBtn:"Feed Osmoe", statusLbl:"Osmoe's Status:", happyLbl:"Happiness", waterLbl:"Water", foodLbl:"Food"});
     } else {
         res.redirect('/login');
     }

@@ -1,0 +1,122 @@
+body {
+    background-color: #68CAFE;
+}
+
+h2 {
+    margin: 13% 20% 0 0; 
+    display:flex; 
+    width:30%; 
+    float:right; 
+    text-align:center
+}
+
+h3 {
+    font-size: 25px;
+    float: left;
+}
+
+#waterLbl {
+    margin: 9% 20% 0 0; 
+}
+
+#inputContainer {
+    margin:10% 0 0 0; 
+    float:left; 
+    width: 70%; 
+    height:70%;
+}
+
+#osmoeContainer {
+    margin: -4% -0.4% 0 0;
+    float: right;
+    width: 30%;
+    height: 102.65%;
+    background: black;
+    overflow: auto;
+}
+
+#statContainer {
+    margin:12% 0 0 0;
+    width: 50%;
+    height: 60%;
+    background: #5E7989;
+    color: white;
+    overflow: auto;
+}
+
+#statusLbl {
+    margin: 5% 0 0 5%;
+}
+
+#happyContainer {
+    margin: 5% 0 17% 5%;
+}
+
+
+#happyBar {
+    background: black;
+    float: right;
+    width: 73%;
+    height: 10%;
+    overflow: auto;
+    margin: 3% 5% 0 0;
+}
+
+#waterContainer {
+    margin: 0 0 29% 5%;
+}
+
+#waterBar {
+    background: black;
+    float: right;
+    width: 73%;
+    height: 10%;
+    overflow: auto;
+    margin: 3% 5% 0 0;
+}
+
+#foodContainer {
+    margin: 0 0 5% 5%;
+}
+
+#foodBar {
+    background: black;
+    float: right;
+    width: 73%;
+    height: 10%;
+    overflow: auto;
+    margin: 3% 5% 0 0;
+}
+
+#upgradeBtns {
+    float:left;
+    width:35%;
+    margin:10% 0 0 5%;
+    color: white; 
+}
+
+#happyBtn {
+    width: 70%;
+    border-radius: 80px;
+    margin: 0 5% 5% 0;
+    background-color:#45546B;
+    height: 20%; 
+    overflow: auto;
+}
+
+#waterBtn {
+    width: 70%;
+    border-radius: 80px;
+    margin: 0 5% 5% 0;
+    background-color:#45546B;
+    height: 20%; 
+    overflow: auto;
+}
+
+#foodBtn {
+    width: 70%;
+    border-radius: 80px;
+    background-color:#45546B;
+    height: 20%; 
+    overflow: auto;
+}

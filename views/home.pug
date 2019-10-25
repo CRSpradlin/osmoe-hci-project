@@ -1,5 +1,29 @@
 html
   head
     title= title
+    style
+      include styles.css
   body
     h1= message
+    #inputContainer
+      #upgradeBtns
+        #happyBtn 
+          h2= happinessBtn
+        #waterBtn
+          h2(id='waterLbl')= waterBtn
+        #foodBtn
+          h2= foodBtn
+      #statContainer
+        h1(id='statusLbl')= statusLbl
+        #happyContainer
+          h3= happyLbl
+          #happyBar
+        #waterContainer
+          h3= waterLbl
+          #waterBar
+        #foodContainer
+          h3= foodLbl
+          #foodBar
+    #osmoeContainer
+    
+    
