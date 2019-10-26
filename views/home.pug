@@ -4,26 +4,33 @@ html
     style
       include styles.css
   body
-    h1= message
+    #messageContainer
+      h1(id='message')= message
     #inputContainer
       #upgradeBtns
         #happyBtn 
+          img(src="https://image.flaticon.com/icons/svg/17/17970.svg" id="happyArrow")
           h2= happinessBtn
         #waterBtn
+          img(src="https://image.flaticon.com/icons/svg/17/17970.svg" id="waterArrow")
           h2(id='waterLbl')= waterBtn
         #foodBtn
+          img(src="https://image.flaticon.com/icons/svg/17/17970.svg" id="foodArrow")
           h2= foodBtn
       #statContainer
         h1(id='statusLbl')= statusLbl
         #happyContainer
           h3= happyLbl
-          #happyBar
+          #happyBarContainer
+            #happyBar
         #waterContainer
           h3= waterLbl
-          #waterBar
+          #waterBarContainer
+            #waterBar
         #foodContainer
           h3= foodLbl
-          #foodBar
+          #foodBarContainer
+            #foodBar
     #osmoeContainer
     
     

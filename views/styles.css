@@ -1,7 +1,7 @@
 body {
     background-color: #68CAFE;
+    font-family: Arial, Helvetica, sans-serif;
 }
-
 h2 {
     margin: 13% 20% 0 0; 
     display:flex; 
@@ -9,25 +9,32 @@ h2 {
     float:right; 
     text-align:center
 }
-
 h3 {
     font-size: 25px;
     float: left;
 }
-
+#messageContainer {
+    width:60%;
+    float: left;
+}
+#message {
+    margin: 8% 0 0 20%;
+    color: white;
+    font-size: 50px;
+}
 #waterLbl {
     margin: 9% 20% 0 0; 
 }
 
 #inputContainer {
-    margin:10% 0 0 0; 
+    margin:7% 0 -5% 0; 
     float:left; 
     width: 70%; 
     height:70%;
 }
 
 #osmoeContainer {
-    margin: -4% -0.4% 0 0;
+    margin: -8.77% -0.4% 0 0;
     float: right;
     width: 30%;
     height: 102.65%;
@@ -53,39 +60,60 @@ h3 {
 }
 
 
-#happyBar {
+#happyBarContainer {
     background: black;
     float: right;
     width: 73%;
     height: 10%;
     overflow: auto;
     margin: 3% 5% 0 0;
+}
+
+#happyBar {
+    height: 100%;
+    width: 90%;
+    float: right;
+    background: #FFC001;
 }
 
 #waterContainer {
     margin: 0 0 29% 5%;
 }
 
-#waterBar {
+#waterBarContainer {
     background: black;
     float: right;
     width: 73%;
     height: 10%;
     overflow: auto;
     margin: 3% 5% 0 0;
+}
+
+#waterBar {
+    height: 100%;
+    width: 90%;
+    float: right;
+    background: #02AFEF;
 }
 
 #foodContainer {
     margin: 0 0 5% 5%;
 }
 
-#foodBar {
+#foodBarContainer {
     background: black;
     float: right;
     width: 73%;
     height: 10%;
     overflow: auto;
     margin: 3% 5% 0 0;
+}
+
+#foodBar {
+    height: 100%;
+    width: 90%;
+    float: right;
+    background: #93CF4E;
 }
 
 #upgradeBtns {
@@ -104,6 +132,13 @@ h3 {
     overflow: auto;
 }
 
+#happyArrow {
+    width: 30%;
+    height: 50%;
+    margin: 10% 0 0 10%;
+    filter: invert(66%) sepia(90%) saturate(805%) hue-rotate(358deg) brightness(103%) contrast(105%);
+}
+
 #waterBtn {
     width: 70%;
     border-radius: 80px;
@@ -113,6 +148,13 @@ h3 {
     overflow: auto;
 }
 
+#waterArrow {
+    width: 30%;
+    height: 50%;
+    margin: 10% 0 0 10%;
+    filter: invert(63%) sepia(44%) saturate(4548%) hue-rotate(159deg) brightness(94%) contrast(100%);
+}
+
 #foodBtn {
     width: 70%;
     border-radius: 80px;
@@ -120,3 +162,9 @@ h3 {
     height: 20%; 
     overflow: auto;
 }
+
+#foodArrow {
+    width: 30%;
+    height: 50%;
+    margin: 10% 0 0 10%;
+    filter: invert(70%) sepia(12%) saturate(1927%) hue-rotate(46deg) brightness(108%) contrast(83%);
