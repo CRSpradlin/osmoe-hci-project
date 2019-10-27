@@ -132,6 +132,12 @@ h3 {
     overflow: auto;
 }
 
+#happyBtn:hover {
+    background: white;
+    color: #45546B;
+}
+
+
 #happyArrow {
     width: 30%;
     height: 50%;
@@ -146,6 +152,11 @@ h3 {
     background-color:#45546B;
     height: 20%; 
     overflow: auto;
+}
+
+#waterBtn:hover {
+    background: white;
+    color: #45546B;
 }
 
 #waterArrow {
@@ -163,9 +174,25 @@ h3 {
     overflow: auto;
 }
 
+#foodBtn:hover {
+    background: white;
+    color: #45546B;
+}
+
 #foodArrow {
     width: 30%;
     height: 50%;
     margin: 10% 0 0 10%;
     filter: invert(70%) sepia(12%) saturate(1927%) hue-rotate(46deg) brightness(108%) contrast(83%);
+}
+
+#osmoeBackground {
+    width: 98%;
+    height: 100%;
+    float: right;
+    background: white;
+}
+#osmoeForeground {
+    margin: 90% 0 0 20%;
+    float: left;
 }
