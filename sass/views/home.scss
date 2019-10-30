@@ -1,7 +1,10 @@
-
+$bgColor: #68CAFE;
+$btnColor: #45546B;
+$fontColor: white;
+$btnRadius: 80px;
 
 body {
-    background-color: #68CAFE;
+    background-color: $bgColor;
     font-family: Arial, Helvetica, sans-serif;
 }
 h2 {
@@ -15,28 +18,114 @@ h3 {
     font-size: 25px;
     float: left;
 }
+
+#addRemove {
+    float: right;
+    width: 7%;
+    height: 15%;
+    margin-right: 5%;
+    
+    &__happy {
+        @extend #addRemove;
+        margin-top: 3%;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    &__water {
+        @extend #addRemove;
+        margin-top: 6.5%;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    &__food {
+        @extend #addRemove;
+        margin-top: 6.5%;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+#goal {
+    width: 80%;
+    height: 20%;
+    margin-left: 7%;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 5%;
+    border-radius: 10px;
+    &__container {
+        margin-left: 10%;
+        overflow: auto;
+        width: 80%;
+        height: 70%;
+    }
+    &__happy {
+        @extend #goal;
+        margin-top: 2%;
+    }
+    &__water {
+        @extend #goal;
+    }
+    &__food {
+        @extend #goal;
+    }
+}
+#profilePic {
+    width: 80%;
+    height: 80%;
+    margin-top: 8%;
+    display: inline-block;
+
+    &:hover {
+        filter: invert(100%) sepia(0%) saturate(7454%) hue-rotate(185deg) brightness(106%) contrast(114%);
+    }
+
+}
+
 #messageContainer {
     width:60%;
     float: left;
 }
 #message {
-    margin: 8% 0 0 20%;
-    color: white;
+    margin: 5.5% 0 0 5%;
+    color: $fontColor;
     font-size: 50px;
 }
-#waterLbl {
-    margin: 9% 20% 0 0; 
+
+#label {
+    &__happy {
+        margin: 12.5% 25% 0 0; 
+    }
+    &__water {
+        margin: 8% 23% 0 0;  
+    }
+    &__status {
+        margin: 5% 0 0 5%;
+    }
+}
+
+.label {
+    height: 10%;
+    font-size: 45px;
+    display: inline-block;
+    margin-top: 15%;
+    font-weight: bold;
+    &__answer {
+        @extend .label;
+    }
 }
 
 #inputContainer {
-    margin:7% 0 -5% 0; 
+    margin:7% -2% -5% -8%; 
     float:left; 
     width: 70%; 
     height:70%;
 }
 
 #osmoeContainer {
-    margin: -8.77% -0.4% 0 0;
+    margin: -7.27% -0.4% 0 0;
     float: right;
     width: 30%;
     height: 102.65%;
@@ -49,20 +138,18 @@ h3 {
     width: 50%;
     height: 60%;
     background: #5E7989;
-    color: white;
+    color: $fontColor;
     overflow: auto;
 }
 
-#statusLbl {
-    margin: 5% 0 0 5%;
-}
 
 #happyContainer {
     margin: 5% 0 17% 5%;
 }
 
 
-#happyBarContainer {
+
+.barContainer {
     background: black;
     float: right;
     width: 73%;
@@ -71,128 +158,159 @@ h3 {
     margin: 3% 5% 0 0;
 }
 
-#happyBar {
+#bar {
     height: 100%;
     width: 90%;
     float: right;
-    background: #FFC001;
+
+    &__happy {
+        @extend #bar;
+        background: #FFC001;
+    }
+    &__water {
+        @extend #bar;
+        background: #02AFEF;
+    }
+    &__food {
+        @extend #bar;
+        background: #93CF4E;
+    }
 }
 
 #waterContainer {
     margin: 0 0 29% 5%;
 }
 
-#waterBarContainer {
-    background: black;
-    float: right;
-    width: 73%;
-    height: 10%;
-    overflow: auto;
-    margin: 3% 5% 0 0;
-}
-
-#waterBar {
-    height: 100%;
-    width: 90%;
-    float: right;
-    background: #02AFEF;
-}
-
 #foodContainer {
     margin: 0 0 5% 5%;
 }
-
-#foodBarContainer {
-    background: black;
-    float: right;
-    width: 73%;
-    height: 10%;
-    overflow: auto;
-    margin: 3% 5% 0 0;
-}
-
-#foodBar {
-    height: 100%;
-    width: 90%;
-    float: right;
-    background: #93CF4E;
-}
-
 #upgradeBtns {
     float:left;
     width:35%;
     margin:10% 0 0 5%;
-    color: white; 
+    color: $fontColor; 
+}
+#overlayShadow {
+    position: fixed; 
+    display: none; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.5);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2; 
 }
 
-#happyBtn {
+#overlay {
+    position: fixed; 
+    display: none; 
+    width: 70%; 
+    height: 70%; 
+    top: 15%;
+    left: 15%;
+    background: $bgColor; 
+    z-index: 3; 
+}
+
+#overlayTitle {
+    color: $fontColor;
+    font-size: 50px;
+    margin: 8% 0 0 15%;
+}
+
+#overlayQuest{
+    color: $fontColor;
+    font-size: 30px;
     width: 70%;
-    border-radius: 80px;
-    margin: 0 5% 5% 0;
-    background-color:#45546B;
-    height: 20%; 
-    overflow: auto;
-}
-
-#happyBtn:hover {
-    background: white;
-    color: #45546B;
+    margin: 2% 0 0 15%;
+    align-content: center;
 }
 
 
-#happyArrow {
+#arrow {
     width: 30%;
     height: 50%;
     margin: 10% 0 0 10%;
-    filter: invert(66%) sepia(90%) saturate(805%) hue-rotate(358deg) brightness(103%) contrast(105%);
+    &__happy {
+        @extend #arrow;
+        filter: invert(66%) sepia(90%) saturate(805%) hue-rotate(358deg) brightness(103%) contrast(105%);
+    }
+    &__water {
+        @extend #arrow;
+        filter: invert(63%) sepia(44%) saturate(4548%) hue-rotate(159deg) brightness(94%) contrast(100%);
+    }
+    &__food {
+        @extend #arrow;
+        filter: invert(70%) sepia(12%) saturate(1927%) hue-rotate(46deg) brightness(108%) contrast(83%);
+    }
 }
 
-#waterBtn {
+#answerContainer {
     width: 70%;
-    border-radius: 80px;
-    margin: 0 5% 5% 0;
-    background-color:#45546B;
-    height: 20%; 
-    overflow: auto;
+    margin-left: 15%;
+    margin-top: 15%;
 }
 
-#waterBtn:hover {
-    background: white;
-    color: #45546B;
-}
-
-#waterArrow {
-    width: 30%;
-    height: 50%;
-    margin: 10% 0 0 10%;
-    filter: invert(63%) sepia(44%) saturate(4548%) hue-rotate(159deg) brightness(94%) contrast(100%);
-}
-
-#foodBtn {
+#button {
     width: 70%;
-    border-radius: 80px;
-    background-color:#45546B;
-    height: 20%; 
+    height: 20%;
+    border-radius: $btnRadius;
+    color: $fontColor;
+    background-color:$btnColor;
     overflow: auto;
-}
-
-#foodBtn:hover {
-    background: white;
-    color: #45546B;
-}
-
-#foodArrow {
-    width: 30%;
-    height: 50%;
-    margin: 10% 0 0 10%;
-    filter: invert(70%) sepia(12%) saturate(1927%) hue-rotate(46deg) brightness(108%) contrast(83%);
+    &:hover {
+        background: $fontColor;
+        color: $btnColor;
+        cursor: pointer;
+    }
+    &__profile {
+        @extend #button;
+        width: 8%;
+        height: 16%;
+        margin: 1% 0 0 1%;
+        border-radius: 100%;
+        background: white;
+        text-align: center;
+        vertical-align: middle;
+        float: left;
+        overflow: auto;
+        &:hover {
+            background: black;
+            
+        }
+    }
+    &__happy {
+        @extend #button;
+        margin: 0 5% 5% 0;
+    }
+    &__water {
+        @extend #button;
+        margin: 0 5% 5% 0;
+    }
+    &__food {
+        @extend #button;
+        margin: 0 5% 5% 0;
+    }
+    &__yes {
+        @extend #button;
+        width: 30%;
+        float: right;
+        text-align: center;
+    }
+    &__no {
+        @extend #button;
+        width: 30%;
+        float: left;
+        text-align: center;
+    }
 }
 
 #osmoeBackground {
     width: 98%;
     height: 100%;
     float: right;
-    background: white;
+    background: $fontColor;
 }
 #osmoeForeground {
     margin: 90% 0 0 20%;
