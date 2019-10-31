@@ -1,0 +1,38 @@
+.auth{
+    @extend .w3-container, .w3-center;
+    background-color: $auth-background;
+    color: white;
+    height: 100%;
+
+    &__nav{
+        @extend .w3-bar;
+        a{
+            text-decoration: none;
+        }
+
+        &-item{
+            @extend .w3-bar-item, .w3-button;
+        }
+    }
+
+    &__modals{
+        @extend .w3-modal;
+
+        &-signupModal{
+            @extend .auth__modals;
+
+            &-content{
+                @extend .w3-modal-content;
+                background-color: transparent;
+            }
+        }
+        &-loginModal{
+            @extend .auth__modals;
+
+            &-content{
+                @extend .w3-modal-content;
+                background-color: transparent;
+            }
+        }
+    }
+}
