@@ -19,6 +19,7 @@ var noBtn;
 var happyARBtn;
 var waterARBtn;
 var foodARbtn;
+var exitBtn;
 
 var overlayShadow;
 var overlay;
@@ -48,6 +49,7 @@ function initialize () {
     foodBtn = document.getElementById("button__food");
     yesBtn = document.getElementById("button__yes");
     noBtn = document.getElementById("button__no");
+    exitBtn = document.getElementById("exit");
 
     //load overlay elements
     overlayShadow = document.getElementById("overlayShadow");
@@ -65,6 +67,7 @@ function initialize () {
 
     yesBtn.addEventListener("click", completeGoal, false);
     noBtn.addEventListener("click", closeWindow, false);
+    exitBtn.addEventListener("click", closeWindow, false);
 
     happyARBtn.addEventListener("click", addHappyGoal, false);
     waterARBtn.addEventListener("click", addWaterGoal, false);
@@ -75,7 +78,6 @@ function initialize () {
 function addHappyGoal() {
     if (happyARBtn.src.includes("plus.png")){
         happyARBtn.src = "../static/images/minus.png";
-        happyGoal.value = "Testing";
         happyGoal.style.backgroundColor = "#FFC100";
         happyGoal.style.color = "#FFFFFF";
     }
@@ -90,7 +92,6 @@ function addHappyGoal() {
 function addWaterGoal() {
     if (waterARBtn.src.includes("plus.png")){
         waterARBtn.src = "../static/images/minus.png";
-        waterGoal.value = "Testing";
         waterGoal.style.backgroundColor = "#02AFEF";
         waterGoal.style.color = "#FFFFFF";
     }
@@ -105,7 +106,6 @@ function addWaterGoal() {
 function addFoodGoal() {
     if (foodARBtn.src.includes("plus.png")){
         foodARBtn.src = "../static/images/minus.png";
-        foodGoal.value = "Testing";
         foodGoal.style.backgroundColor = "#93CF4E";
         foodGoal.style.color = "#FFFFFF";
     }
@@ -161,6 +161,7 @@ function loadFoodWindow() {
 function closeWindow() {
     overlay.style.display = "none";
     overlayShadow.style.display = "none";
+    answerContainer.style.display = "block";
 }
 
 function completeGoal() {
