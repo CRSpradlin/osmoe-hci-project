@@ -27,14 +27,11 @@ var overlayTitle;
 var overlayQuest;
 
 function initialize () {
+    //load goal text fields & container
     happyGoal = document.getElementById("goal__happy");
     waterGoal = document.getElementById("goal__water");
     foodGoal = document.getElementById("goal__food");
     goalContainer = document.getElementById("goal__container");
-
-    happyARBtn = document.getElementById("addRemove__happy");
-    waterARBtn = document.getElementById("addRemove__water");
-    foodARBtn = document.getElementById("addRemove__food");
     
     //load status bars
     happyBar = document.getElementById("bar__happy");
@@ -50,6 +47,9 @@ function initialize () {
     yesBtn = document.getElementById("button__yes");
     noBtn = document.getElementById("button__no");
     exitBtn = document.getElementById("exit");
+    happyARBtn = document.getElementById("addRemove__happy");
+    waterARBtn = document.getElementById("addRemove__water");
+    foodARBtn = document.getElementById("addRemove__food");
 
     //load overlay elements
     overlayShadow = document.getElementById("overlayShadow");
@@ -58,17 +58,14 @@ function initialize () {
     overlayQuest = document.getElementById("overlayQuest");
     answerContainer = document.getElementById("answerContainer");
 
-    //load goal boxes
-
+    //add listeners to buttons
     profileBtn.addEventListener("click", loadProfileWindow, false);
     happyBtn.addEventListener("click", loadHappyWindow, false);
     waterBtn.addEventListener("click", loadWaterWindow, false);
     foodBtn.addEventListener("click", loadFoodWindow, false);
-
     yesBtn.addEventListener("click", completeGoal, false);
     noBtn.addEventListener("click", closeWindow, false);
     exitBtn.addEventListener("click", closeWindow, false);
-
     happyARBtn.addEventListener("click", addHappyGoal, false);
     waterARBtn.addEventListener("click", addWaterGoal, false);
     foodARBtn.addEventListener("click", addFoodGoal, false);
