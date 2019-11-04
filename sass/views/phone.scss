@@ -1,0 +1,69 @@
+$bgColor: #68CAFE;
+$btnColor: #45546B;
+$fontColor: white;
+$btnRadius: 80px;
+
+body {
+    text-align: center;
+}
+
+#osmoe {
+    position: fixed;
+    width: 70%;
+    margin-top: 100%;
+    z-index: -1;
+    &__background {
+        overflow: auto;
+        z-index: -1;
+    }
+    &__foreground {
+        overflow: auto;
+        width: 100%;
+        margin-left: -35%;
+        z-index: -1;
+    }
+}
+
+#tab {
+    &__status {
+        position: fixed;
+        background: rgba(0,0,0,0.5);
+        width: 102%;
+        margin-left: -1%;
+        margin-top: -1%;
+        height: 5%;
+        z-index: 1;
+    }
+    &__upgrade {
+        position: fixed;
+        width: 30%;
+        height: 5%;
+        margin-top: 196.2%;
+        margin-left: 69.2%;
+        background: rgba(0,0,0,0.5);
+        z-index: 1;
+    }
+}
+
+#overlay {
+    position: fixed;
+    width: 102%;
+    height: 25%;
+    background: rgba(0,0,0,0.5);
+    margin-left: -15%;
+    display: none;
+    &__upgrade {
+        @extend #overlay;
+        margin-top: 124.5%;
+    }
+}
+
+#expand {
+    height: 100%;
+    &__upgrade {
+        @extend #expand;
+    }
+    &__status {
+        @extend #expand;
+    }
+}

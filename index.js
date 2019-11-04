@@ -107,7 +107,7 @@ app.route('/login')
             }
         });
     });
-
+/*
 // route for user's dashboard
 app.get('/dashboard', (req, res) => {
     if (req.session.user && req.cookies.user_sid) {
@@ -115,6 +115,17 @@ app.get('/dashboard', (req, res) => {
         console.log(user.email + " has logged in...");
         res.render('./home.pug', {title:"Home", message:"Osmoe's Daily Inspirational Quote:", happinessBtn:"Increase Happiness", 
         waterBtn:"Give Osmoe Water", foodBtn:"Feed Osmoe", statusLbl:"Osmoe's Status:", happyLbl:"Happiness", waterLbl:"Water", foodLbl:"Food"});
+    } else {
+        res.redirect('/login');
+    }
+});*/
+
+// route for user's dashboard
+app.get('/dashboard', (req, res) => {
+    if (req.session.user && req.cookies.user_sid) {
+        let user = req.session.user;
+        console.log(user.email + " has logged in...");
+        res.render('./phone.pug', {title:"Home"});
     } else {
         res.redirect('/login');
     }
