@@ -1,28 +1,50 @@
 .auth{
-    @extend .w3-container, .w3-center;
+    @extend .w3-container;
     background-color: $auth-background;
     color: white;
     height: 100%;
 
-    &__nav{
-        @extend .w3-bar;
-        a{
-            text-decoration: none;
-        }
+    &__header{
+        @extend .w3-center;
+        margin: auto;
+        line-height: 2rem;
+        max-width: 90%;
 
-        &-item{
-            @extend .w3-bar-item, .w3-button;
+        &-title{
+            @extend .w3-padding;
+            font-size: 2rem;
+            vertical-align: middle;
+            float: left;
+        }
+        &-nav{
+            @extend .w3-bar;
+            width: auto;
+            float: right;
+            vertical-align: middle;
+    
+            a{
+                text-decoration: none;
+            }
+            &-item{
+                @extend .w3-bar-item, .w3-button, .w3-round;
+            }
         }
     }
+
 
     &__modals{
         @extend .w3-modal;
 
+        &-animate{
+            opacity: 0;
+            transition: all .3s linear;
+            margin-top: 30px;
+        }
         &-signupModal{
             @extend .auth__modals;
 
             &-content{
-                @extend .w3-modal-content;
+                @extend .w3-modal-content, .auth__modals-animate;
                 background-color: transparent;
             }
         }
@@ -30,9 +52,16 @@
             @extend .auth__modals;
 
             &-content{
-                @extend .w3-modal-content;
+                @extend .w3-modal-content, .auth__modals-animate;
                 background-color: transparent;
             }
+        }
+        &-isVisible{
+            display: block;
+        }
+        &-isOpen{
+            margin-top: 15px;
+            opacity: 1;
         }
     }
 }

@@ -2,7 +2,7 @@ $login-text-color: white;
 
 .login{
     &__form{
-        @extend .w3-container, .w3-round-large;
+        @extend .w3-container, .w3-round-large, .w3-center;
         background-color: $form-background;
         margin: auto;
 
@@ -29,7 +29,7 @@ $login-text-color: white;
         }
         &-submit{
             @extend .w3-button, .w3-round;
-            background-color: $auth-background;
+            background-color: $button-background;
         }
     }
 }

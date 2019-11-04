@@ -1,2 +1,4 @@
-$auth-background: rgb(80, 80, 167);
-$form-background: $auth-background + rgb(0,0,200);
+$global-background: #68cafe;
+$auth-background: $global-background;
+$form-background: $auth-background;
+$button-background: #45546b;

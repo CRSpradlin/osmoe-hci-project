@@ -1,21 +1,16 @@
 extends ../base.pug
+block extrahead
+    script(src="/static/js/views/auth/animate_modal.js")
 block body
     <div class="auth">
-        <div>
-            <h1>Welcome to Osmoe Sam</h1>
-        </div>
+        <div class="auth__header">
+            <div class="auth__header-title">Welcome to Osmoe Sam</div>
 
-        <nav>
-            <div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="auth__nav">
-                    <ul>
-                        <li class="auth__nav-item"><a onclick="reveal('signup')">Sign Up</a></li>
-                        <li class="auth__nav-item"><a onclick="reveal('login')">Log In</a></li>
-                    </ul>
-                </div>
+            <div class="auth__header-nav">
+                <div onclick="reveal('signup')" class="auth__header-nav-item">Sign Up</div>
+                <div onclick="reveal('login')" class="auth__header-nav-item">Log In</div>
             </div>
-        </nav>
+        </div>
     
         <div id="signupModal" class="auth__modals-signupModal">
             <div class="auth__modals-signupModal-content">
@@ -32,7 +27,12 @@ block body
 append extrajs
     script
         |function reveal(id_prefix){
-        |    document.getElementById(id_prefix + "Modal").style.display = "block";
+        |    document.getElementById(id_prefix+"Modal").style.display = "block";
+        |    setTimeout(function(){animate_display(".auth__modals-"+id_prefix+"Modal-content","show");}, 30);
+        |}
+        |function hide(id_prefix){
+        |    animate_display(".auth__modals-"+id_prefix+"Modal-content","hide");
+        |    $('.auth__modals-'+id_prefix+'Modal-content').one('transitionend',function(){document.getElementById(id_prefix+"Modal").style.display = "none";});
         |}
         if modal
             | reveal("#{modal}");
