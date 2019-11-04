@@ -27,6 +27,8 @@ var overlayTitle;
 var overlayQuest;
 
 function initialize () {
+    console.log(screen.width / screen.height);
+    console.log(screen.height);
     //load goal text fields & container
     happyGoal = document.getElementById("goal__happy");
     waterGoal = document.getElementById("goal__water");
