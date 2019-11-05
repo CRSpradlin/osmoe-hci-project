@@ -19,9 +19,9 @@
     "node-sass": "^4.13.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node .",
-    "generate_css": "node-sass sass/main.scss -o static/css"
+    "generate_css": "node-sass sass/main.scss -o static/css",
+    "watch_css": "node-sass sass/main.scss -w -o static/css"
   },
   "keywords": [],
   "author": "",

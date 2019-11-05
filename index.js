@@ -62,45 +62,50 @@ var sessionChecker = (req, res, next) => {
 
 // route for Home-Page
 app.get('/', sessionChecker, (req, res) => {
-    res.redirect('/login');
+    res.redirect('/dashboard');
 });
 
 
 // route for user signup
 app.route('/signup')
     .get(sessionChecker, (req, res) => {
-        res.sendFile(__dirname + '/views/auth/signup.html');
+        res.render('./auth/auth.pug', {modal:"signup"});
     })
     .post((req, res) => {
-        User.create({
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password
+        var email = req.body.email;
+        User.findOne({ where: { email: email } }).then(function (user) {
+            if(!user){
+                User.create({
+                    username: req.body.username,
+                    email: req.body.email,
+                    password: req.body.password
+                })
+                .then(newUser => {
+                    req.session.user = newUser.dataValues;
+                    res.redirect('/dashboard');
+                })
+                .catch(error => {
+                    res.render('./auth/auth.pug', {modal:"signup", signup_error:"true"});
+                });
+            } else {
+                res.render('./auth/auth.pug', {modal:"signup", signup_error:"true"});
+            }
         })
-        .then(user => {
-            req.session.user = user.dataValues;
-            res.redirect('/dashboard');
-        })
-        .catch(error => {
-            res.redirect('/signup');
-        });
     });
 
 
 // route for user Login
 app.route('/login')
     .get(sessionChecker, (req, res) => {
-        res.sendFile(__dirname + '/views/auth/login.html');
+        res.render('./auth/auth.pug', {modal:"login"});
     })
     .post((req, res) => {
-        var username = req.body.username,
+        var email = req.body.email,
             password = req.body.password;
 
-        User.findOne({ where: { username: username } }).then(function (user) {
-            if (!user) {
-                res.redirect('/login');
-            } else if (!user.validPassword(password)) {
-                res.redirect('/login');
+        User.findOne({ where: { email: email } }).then(function (user) {
+            if (!user || !user.validPassword(password)) {
+                res.render('./auth/auth.pug', {modal:"login", login_error:"true"});
             } else {
                 req.session.user = user.dataValues;
                 res.redirect('/dashboard');
@@ -116,7 +121,7 @@ app.get('/dashboard', (req, res) => {
         res.render('./home.pug', {title:"Home", message:"Osmoe's Daily Inspirational Quote:", happinessBtn:"Increase Happiness", 
         waterBtn:"Give Osmoe Water", foodBtn:"Feed Osmoe", statusLbl:"Osmoe's Status:", happyLbl:"Happiness", waterLbl:"Water", foodLbl:"Food"});
     } else {
-        res.redirect('/login');
+        res.render('./auth/auth.pug');
     }
 });
 

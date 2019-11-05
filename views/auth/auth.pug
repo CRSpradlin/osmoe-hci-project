@@ -1,0 +1,43 @@
+extends ../base.pug
+block extrahead
+    script(src="/static/js/views/auth/animate_modal.js")
+block body
+    <div class="auth">
+        <div class="auth__header">
+            <div class="auth__header-title">Welcome to Osmoe Sam</div>
+
+            <div class="auth__header-nav">
+                <div onclick="reveal('signup')" class="auth__header-nav-item">Sign Up</div>
+                <div onclick="reveal('login')" class="auth__header-nav-item">Log In</div>
+            </div>
+        </div>
+    
+        <div id="signupModal" class="auth__modals-signupModal">
+            <div class="auth__modals-signupModal-content">
+                include signup.pug 
+            </div>
+        </div>
+
+        <div id="loginModal" class="auth__modals-loginModal">
+            <div class="auth__modals-loginModal-content">
+                include login.pug
+            </div>
+        </div>
+    </div>
+append extrajs
+    script
+        |function reveal(id_prefix){
+        |    document.getElementById(id_prefix+"Modal").style.display = "block";
+        |    setTimeout(function(){animate_display(".auth__modals-"+id_prefix+"Modal-content","show");}, 30);
+        |}
+        |function hide(id_prefix){
+        |    animate_display(".auth__modals-"+id_prefix+"Modal-content","hide");
+        |    $('.auth__modals-'+id_prefix+'Modal-content').one('transitionend',function(){document.getElementById(id_prefix+"Modal").style.display = "none";});
+        |}
+        if modal
+            | reveal("#{modal}");
+        if login_error
+            | document.getElementById("loginError").style.opacity = 1;
+        if signup_error
+            | document.getElementById("signupError").style.opacity = 1;
+    
