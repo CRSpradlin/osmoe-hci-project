@@ -1,6 +1,61 @@
+
 extends base.pug
+
+block title
+  title Home
 block body
-  <div class="home__container">
-    h1=title
-    h3=message
-  </div>
+  block extrajs
+  script(src='../static/scripts/home.js')
+  #overlay
+    #exit
+      img(id="button__exit" src="../static/images/exit.png")
+    h1(id='overlayTitle')
+    h3(id='overlayQuest')
+    #answerContainer
+      #button__yes
+        .label__answer(id='yesBtn') Yes
+      #button__no
+        .label__answer(id='noBtn') No
+    #goal__container 
+      input(type='text' value='Happiness Goal' id='goal__happy')
+      img(id="addRemove__happy" src="../static/images/plus.png")
+      input(type='text' value='Water Goal' id='goal__water')
+      img(id="addRemove__water" src="../static/images/plus.png")
+      input(type='text' value='Food Goal' id='goal__food')
+      img(id="addRemove__food" src="../static/images/plus.png")
+  #overlayShadow
+  #button__profile
+    img(src="../static/images/defaultProfilePic.png" id='profilePic')
+  #messageContainer
+    h1(id='message')= message
+  #inputContainer
+    #upgradeBtns
+      #button__happy 
+        img(src="../static/images/upArrow.svg" id="arrow__happy")
+        h2(id='label__happy')= happinessBtn
+      #button__water
+        img(src="../static/images/upArrow.svg" id="arrow__water")
+        h2(id='label__water')= waterBtn
+      #button__food
+        img(src="../static/images/upArrow.svg" id="arrow__food")
+        h2= foodBtn
+    #statContainer
+      h1(id='label__status')= statusLbl
+      #happyContainer
+        h3= happyLbl
+        .barContainer(id='barContainer')
+          #bar__happy
+      #waterContainer
+        h3= waterLbl
+        .barContainer
+          #bar__water
+      #foodContainer
+        h3= foodLbl
+        .barContainer
+          #bar__food
+  #osmoeContainer
+    #osmoeBackground
+      #osmoeForeground
+        img(src="../static/penguin/OSIdleX10.gif" id='osmoe') 
+    
+
