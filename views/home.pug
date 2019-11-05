@@ -1,41 +1,61 @@
 
-html
+extends base.pug
 
-  head
-    title= title
-    style
-      include ../sass/views/home.scss
-  body
-    #messageContainer
-      h1(id='message')= message
-    #inputContainer
-      #upgradeBtns
-        #happyBtn 
-          img(src="../static/images/upArrow.svg" id="happyArrow")
-          h2= happinessBtn
-        #waterBtn
-          img(src="../static/images/upArrow.svg" id="waterArrow")
-          h2(id='waterLbl')= waterBtn
-        #foodBtn
-          img(src="../static/images/upArrow.svg" id="foodArrow")
-          h2= foodBtn
-      #statContainer
-        h1(id='statusLbl')= statusLbl
-        #happyContainer
-          h3= happyLbl
-          #happyBarContainer
-            #happyBar
-        #waterContainer
-          h3= waterLbl
-          #waterBarContainer
-            #waterBar
-        #foodContainer
-          h3= foodLbl
-          #foodBarContainer
-            #foodBar
-    #osmoeContainer
-      #osmoeBackground
-        #osmoeForeground
-          img(src="../static/penguin/OSIdleX10.gif" id='osmoe') 
+block title
+  title Home
+block body
+  block extrajs
+  script(src='../static/scripts/home.js')
+  #overlay
+    #exit
+      img(id="button__exit" src="../static/images/exit.png")
+    h1(id='overlayTitle')
+    h3(id='overlayQuest')
+    #answerContainer
+      #button__yes
+        .label__answer(id='yesBtn') Yes
+      #button__no
+        .label__answer(id='noBtn') No
+    #goal__container 
+      input(type='text' value='Happiness Goal' id='goal__happy')
+      img(id="addRemove__happy" src="../static/images/plus.png")
+      input(type='text' value='Water Goal' id='goal__water')
+      img(id="addRemove__water" src="../static/images/plus.png")
+      input(type='text' value='Food Goal' id='goal__food')
+      img(id="addRemove__food" src="../static/images/plus.png")
+  #overlayShadow
+  #button__profile
+    img(src="../static/images/defaultProfilePic.png" id='profilePic')
+  #messageContainer
+    h1(id='message')= message
+  #inputContainer
+    #upgradeBtns
+      #button__happy 
+        img(src="../static/images/upArrow.svg" id="arrow__happy")
+        h2(id='label__happy')= happinessBtn
+      #button__water
+        img(src="../static/images/upArrow.svg" id="arrow__water")
+        h2(id='label__water')= waterBtn
+      #button__food
+        img(src="../static/images/upArrow.svg" id="arrow__food")
+        h2= foodBtn
+    #statContainer
+      h1(id='label__status')= statusLbl
+      #happyContainer
+        h3= happyLbl
+        .barContainer(id='barContainer')
+          #bar__happy
+      #waterContainer
+        h3= waterLbl
+        .barContainer
+          #bar__water
+      #foodContainer
+        h3= foodLbl
+        .barContainer
+          #bar__food
+  #osmoeContainer
+    #osmoeBackground
+      #osmoeForeground
+        img(src="../static/penguin/OSIdleX10.gif" id='osmoe') 
     
 
