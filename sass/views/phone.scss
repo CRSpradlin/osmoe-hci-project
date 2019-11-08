@@ -3,15 +3,14 @@ $btnColor: #45546B;
 $fontColor: white;
 $btnRadius: 80px;
 
-body {
-    text-align: center;
-}
 
 #osmoe {
-    position: fixed;
-    width: 70%;
-    margin-top: 100%;
-    z-index: -1;
+    &__phone {
+        position: fixed;
+        width: 70%;
+        margin-top: 100%;
+        z-index: -1;
+    }
     &__background {
         overflow: auto;
         z-index: -1;
@@ -45,7 +44,7 @@ body {
     }
 }
 
-#overlay {
+#phoneOverlay {
     position: fixed;
     width: 102%;
     height: 25%;
@@ -53,7 +52,7 @@ body {
     margin-left: -15%;
     display: none;
     &__upgrade {
-        @extend #overlay;
+        @extend #phoneOverlay;
         margin-top: 124.5%;
     }
 }
