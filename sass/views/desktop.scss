@@ -19,7 +19,6 @@ h3 {
     font-size: 25px;
     float: left;
 }
-
 #exit {
     float: right;
     width: 5%;
@@ -29,7 +28,6 @@ h3 {
         filter: invert(100%);
     }
 }
-
 #addRemove {
     float: right;
     width: 7%;
@@ -94,10 +92,56 @@ h3 {
     }
 
 }
-
-#messageContainer {
-    width:60%;
-    float: left;
+#container {
+    position: fixed;
+    &__input {
+        @extend #container;
+        margin:13% -2% -5% -8%; 
+        width: 70%; 
+        height:70%;
+    }
+    &__osmoe {
+        @extend #container;
+        margin-left: 70%;
+        width: 30%;
+        height: 100%;
+        background: black;
+        overflow: auto;
+    }
+    &__stat {
+        @extend #container;
+        margin:9.5% 0 0 33%;
+        width: 35%;
+        height: 42%;
+        background: #5E7989;
+        color: $fontColor;
+        overflow: auto;
+    }
+    &__happy {
+        margin: 5% 0 17% 5%;
+    }
+    &__water {
+        margin: 0 0 29% 5%;
+    }
+    &__food {
+        margin: 0 0 5% 5%;
+    }
+    &__upgradeBtns {
+        @extend #container;
+        width:20.5%;
+        height: 60%;
+        margin:10% 0 0 10%;
+        color: $fontColor; 
+    }
+    &__answer {
+        width: 70%;
+        margin-left: 15%;
+        margin-top: 15%;
+    }
+    &__message {
+        width:60%;
+        float: left;
+    }
 }
 #message {
     position: fixed;
@@ -105,19 +149,23 @@ h3 {
     color: $fontColor;
     font-size: 50px;
 }
-
 #label {
     &__happy {
-        margin: 12.5% 25% 0 0; 
+        padding: 11% 25% 0 0; 
+        margin: 0 0 0 0;
     }
     &__water {
-        margin: 8% 23% 0 0;  
+        padding: 6% 18% 0 0; 
+        margin: 0 0 0 0;
+    }
+    &__food {
+        padding: 11% 20% 0 0; 
+        margin: 0 0 0 0;
     }
     &__status {
-        margin: 5% 0 0 5%;
+        padding: 2% 0 0 5%;
     }
 }
-
 .label {
     height: 10%;
     font-size: 45px;
@@ -128,42 +176,6 @@ h3 {
         @extend .label;
     }
 }
-
-#inputContainer {
-    position: fixed;
-    margin:13% -2% -5% -8%; 
-    float:left; 
-    width: 70%; 
-    height:70%;
-}
-
-#osmoeContainer {
-    position: fixed;
-    margin-left: 70%;
-    float: right;
-    width: 30%;
-    height: 100%;
-    background: black;
-    overflow: auto;
-}
-
-#statContainer {
-    position: fixed;
-    margin:9.5% 0 0 33%;
-    width: 35%;
-    height: 42%;
-    background: #5E7989;
-    color: $fontColor;
-    overflow: auto;
-}
-
-
-#happyContainer {
-    margin: 5% 0 17% 5%;
-}
-
-
-
 .barContainer {
     background: black;
     float: right;
@@ -172,7 +184,6 @@ h3 {
     overflow: auto;
     margin: 3% 5% 0 0;
 }
-
 #bar {
     height: 100%;
     width: 90%;
@@ -191,33 +202,6 @@ h3 {
         background: #93CF4E;
     }
 }
-
-#waterContainer {
-    margin: 0 0 29% 5%;
-}
-
-#foodContainer {
-    margin: 0 0 5% 5%;
-}
-#upgradeBtns {
-    position: fixed;
-    width:20.5%;
-    height: 60%;
-    margin:10% 0 0 10%;
-    color: $fontColor; 
-}
-#overlayShadow {
-    position: fixed; 
-    display: none; 
-    width: 100%; 
-    height: 100%; 
-    background: rgba(0,0,0,0.5);
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2; 
-}
-
 #overlay {
     position: fixed; 
     display: none; 
@@ -227,24 +211,30 @@ h3 {
     left: 15%;
     background: $bgColor; 
     z-index: 3; 
+    &__title {
+        color: $fontColor;
+        font-size: 50px;
+        width: 90%;
+        margin: 8% 0 0 15%;
+    }
+    &__question{
+        color: $fontColor;
+        font-size: 30px;
+        width: 70%;
+        margin: 2% 0 0 15%;
+        align-content: center;
+    }
+    &__shadow {
+        @extend #overlay;
+        width: 100%; 
+        height: 100%; 
+        background: rgba(0,0,0,0.5);
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2; 
+    }
 }
-
-#overlayTitle {
-    color: $fontColor;
-    font-size: 50px;
-    width: 90%;
-    margin: 8% 0 0 15%;
-}
-
-#overlayQuest{
-    color: $fontColor;
-    font-size: 30px;
-    width: 70%;
-    margin: 2% 0 0 15%;
-    align-content: center;
-}
-
-
 #arrow {
     width: 30%;
     height: 50%;
@@ -262,13 +252,6 @@ h3 {
         filter: invert(70%) sepia(12%) saturate(1927%) hue-rotate(46deg) brightness(108%) contrast(83%);
     }
 }
-
-#answerContainer {
-    width: 70%;
-    margin-left: 15%;
-    margin-top: 15%;
-}
-
 #button {
     width: 70%;
     height: 20%;
@@ -326,19 +309,16 @@ h3 {
         height: 100%;
     }
 }
-
 #osmoe {
     width: 320px;
     height: 320px;
+    &__background {
+        width: 100%;
+        height: 100%;
+        float: right;
+        background: $fontColor;
+    }
+    &__foreground {
+        margin: 90% 0 0 0;
+    }
 }
-
-#osmoeBackground {
-    width: 100%;
-    height: 100%;
-    float: right;
-    background: $fontColor;
-}
-#osmoeForeground {
-    margin: 90% 0 0 0;
-}
-

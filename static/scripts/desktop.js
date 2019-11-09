@@ -10,6 +10,8 @@ var statusLabel;
 var happyLabel;
 var waterLabel;
 var foodLabel;
+var message;
+var h3
 
 var happyArrow;
 var waterArrow;
@@ -39,6 +41,8 @@ var overlayQuest;
 
 var profileHeight;
 var profileWidth;
+var statContainerHeight;
+var statContainerWidth;
 
 var osmoe;
 
@@ -48,28 +52,32 @@ function initialize () {
     waterGoal = document.getElementById("goal__water");
     foodGoal = document.getElementById("goal__food");
     
-
+    //load labels
     happyLabel = document.getElementById("label__happy");
     waterLabel = document.getElementById("label__water");
     foodLabel = document.getElementById("label__food");
+    statusLabel = document.getElementById("label__status");
+    message = document.getElementById("message");
+    h3 = document.getElementsByTagName('h3');
 
+    //load arrow images
     happyArrow = document.getElementById("arrow__happy");
     waterArrow = document.getElementById("arrow__water");
     foodArrow = document.getElementById("arrow__food");
 
-    statusLabel = document.getElementById("label__status");
-    
     //load status bars
     happyBar = document.getElementById("bar__happy");
     waterBar = document.getElementById("bar__water");
     foodBar = document.getElementById("bar__food");
 
+    //load containers
     goalContainer = document.getElementById("goal__container");
-    barContainer = document.getElementById("barContainer");
-    statContainer = document.getElementById("statContainer");
-    osmoeContainer = document.getElementById("osmoeContainer");
+    barContainer = document.getElementById("container__bar");
+    statContainer = document.getElementById("container__stat");
+    osmoeContainer = document.getElementById("container__osmoe");
 
-    osmoeForeground = document.getElementById("osmoeForeground");
+    //load osmoe container
+    osmoeForeground = document.getElementById("osmoe__foreground");
 
     //load all buttons
     profileBtn = document.getElementById("button__profile");
@@ -84,51 +92,62 @@ function initialize () {
     foodARBtn = document.getElementById("addRemove__food");
 
     //load overlay elements
-    overlayShadow = document.getElementById("overlayShadow");
+    overlayShadow = document.getElementById("overlay__shadow");
     overlay = document.getElementById("overlay");
-    overlayTitle = document.getElementById("overlayTitle");
-    overlayQuest = document.getElementById("overlayQuest");
-    answerContainer = document.getElementById("answerContainer");
+    overlayTitle = document.getElementById("overlay__title");
+    overlayQuest = document.getElementById("overlay__question");
+    answerContainer = document.getElementById("container__answer");
 
+
+    //scaling elements to fit screen properly
+
+    //adjust profile button to always be a circle
     profileWidth = screen.width / 12;
     profileWidth += "px";
     profileHeight = profileWidth;
-    
     profileWidth = "width: " + profileWidth;
     profileWidth += ";height: " + profileHeight;
-
     profileBtn.setAttribute("style", profileWidth);
-    var statContainerHeight;
-    var statContainerWidth = statContainer.offsetWidth;
+
+    //Adjust statcontainer to never be too wide or tall
+    statContainerHeight;
+    statContainerWidth = statContainer.offsetWidth;
     statContainerHeight = statContainerWidth * 0.6;
     statContainerWidth += "px";
     statContainerHeight += "px";
     statContainerWidth = "width: " + statContainerWidth + ";height: " + statContainerHeight;
-
     statContainer.setAttribute("style", statContainerWidth);
 
+    //make sure Osmoe is always in correct position
     osmoeForeground.style.marginLeft = (osmoeContainer.offsetWidth - 320) / 2;
     osmoeForeground.style.marginTop = (osmoeContainer.offsetHeight - 320) / 1.3;
 
+
     happyLabel.style.fontSize = (screen.width * 0.013);
-    happyArrow.style.width = (screen.width * 0.043);
-
     waterLabel.style.fontSize = (screen.width * 0.013);
-    waterArrow.style.width = (screen.width * 0.043);
-
     foodLabel.style.fontSize = (screen.width * 0.013);
+
+    happyLabel.style.paddingTop = (screen.height * 0.025);
+    waterLabel.style.paddingTop = (screen.height * 0.012);
+    foodLabel.style.paddingTop = (screen.height * 0.025);
+
+
+    happyArrow.style.width = (screen.width * 0.043);
+    waterArrow.style.width = (screen.width * 0.043);
     foodArrow.style.width = (screen.width * 0.043);
 
     statusLabel.style.fontSize = statContainer.offsetWidth * 0.05;
-
     statContainer.height = statContainer.offsetWidth * 0.4;
 
-    var title = document.getElementById("message");
-    title.style.fontSize = screen.width / 35;
+    happyBtn.style.height = screen.height * 0.1;
+    waterBtn.style.height = screen.height * 0.1;
+    foodBtn.style.height = screen.height * 0.1;
 
-    var all = document.getElementsByTagName('h3');
-    for (var i = 0; i < all.length; i++) {
-        all[i].style.fontSize = statContainer.offsetWidth * 0.037;
+    
+    message.style.fontSize = screen.width / 35;
+
+    for (var i = 0; i < h3.length; i++) {
+        h3[i].style.fontSize = statContainer.offsetWidth * 0.037;
     }
 
 
