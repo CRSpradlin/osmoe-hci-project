@@ -1,0 +1,35 @@
+$login-text-color: white;
+
+.login{
+    &__form{
+        @extend .w3-container, .w3-round-large, .w3-center;
+        background-color: $form-background;
+        margin: auto;
+
+        &-error{
+            color: red;
+            opacity: 0;
+        }
+        &-close{
+            padding: none;
+            float: right;
+
+            &:hover{
+                text-shadow: 2px 2px 5px black;
+                cursor: pointer;
+            }
+        }
+        &-section{
+            @extend .w3-padding-small;
+        }
+        &-input{
+            @extend .w3-input, .w3-round;
+            margin: auto;
+            width: 50%;
+        }
+        &-submit{
+            @extend .w3-button, .w3-round;
+            background-color: $button-background;
+        }
+    }
+}

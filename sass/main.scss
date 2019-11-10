@@ -1,3 +1,8 @@
+@import "variables";
+@import "./external/w3.scss";
+@import "./views/auth/auth.scss";
 @import "./views/auth/login.scss";
 @import "./views/desktop.scss";
 @import "./views/phone.scss";
+@import "./views/auth/signup.scss";
+@import "./views/home.scss";
