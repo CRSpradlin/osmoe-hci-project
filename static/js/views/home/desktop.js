@@ -45,6 +45,10 @@ var statContainerHeight;
 var statContainerWidth;
 
 var osmoe;
+var backgroundImage;
+var osmoeWindow;
+
+var screenWidth;
 
 function initialize () {
     //load goal text fields & container
@@ -78,6 +82,9 @@ function initialize () {
 
     //load osmoe container
     osmoeForeground = document.getElementById("osmoe__foreground");
+    osmoe = document.getElementById("osmoe");
+    backgroundImage = document.getElementById("backgroundImage");
+    osmoeWindow = document.getElementById("window");
 
     //load all buttons
     profileBtn = document.getElementById("button__profile");
@@ -110,7 +117,6 @@ function initialize () {
     profileBtn.setAttribute("style", profileWidth);
 
     //Adjust statcontainer to never be too wide or tall
-    statContainerHeight;
     statContainerWidth = statContainer.offsetWidth;
     statContainerHeight = statContainerWidth * 0.6;
     statContainerWidth += "px";
@@ -118,20 +124,15 @@ function initialize () {
     statContainerWidth = "width: " + statContainerWidth + ";height: " + statContainerHeight;
     statContainer.setAttribute("style", statContainerWidth);
 
-    //make sure Osmoe is always in correct position
-    osmoeForeground.style.marginLeft = (osmoeContainer.offsetWidth - 320) / 2;
-    osmoeForeground.style.marginTop = (osmoeContainer.offsetHeight - 320) / 1.3;
 
+    happyLabel.style.fontSize = (happyBtn.clientWidth * 0.09);
+    waterLabel.style.fontSize = (waterBtn.clientWidth * 0.09);
+    foodLabel.style.fontSize = (foodBtn.clientWidth * 0.09);
 
-    happyLabel.style.fontSize = (screen.width * 0.013);
-    waterLabel.style.fontSize = (screen.width * 0.013);
-    foodLabel.style.fontSize = (screen.width * 0.013);
-
-    happyLabel.style.paddingTop = (screen.height * 0.025);
-    waterLabel.style.paddingTop = (screen.height * 0.012);
-    foodLabel.style.paddingTop = (screen.height * 0.025);
-
-
+    happyLabel.style.paddingTop = ((happyBtn.clientHeight * 0.75 - happyLabel.clientHeight) / 2);
+    waterLabel.style.paddingTop = ((waterBtn.clientHeight - (waterBtn.clientHeight * 0.1)- waterLabel.clientHeight) / 2 + "%");
+    foodLabel.style.paddingTop = (foodBtn.clientHeight * 0.15 + "px");
+    
     happyArrow.style.width = (screen.width * 0.043);
     waterArrow.style.width = (screen.width * 0.043);
     foodArrow.style.width = (screen.width * 0.043);
@@ -139,9 +140,11 @@ function initialize () {
     statusLabel.style.fontSize = statContainer.offsetWidth * 0.05;
     statContainer.height = statContainer.offsetWidth * 0.4;
 
-    happyBtn.style.height = screen.height * 0.1;
-    waterBtn.style.height = screen.height * 0.1;
-    foodBtn.style.height = screen.height * 0.1;
+    happyBtn.style.height = happyBtn.clientWidth * 0.4;
+    waterBtn.style.height = waterBtn.clientWidth * 0.4;
+    foodBtn.style.height = foodBtn.clientWidth * 0.4;
+
+    happyBtn.style.width = waterBtn.style.width = foodBtn.style.width = "70%";
 
     
     message.style.fontSize = screen.width / 35;
@@ -149,6 +152,13 @@ function initialize () {
     for (var i = 0; i < h3.length; i++) {
         h3[i].style.fontSize = statContainer.offsetWidth * 0.037;
     }
+
+    osmoeForeground.scrollLeft = backgroundImage.clientWidth / 3;
+    osmoe.style.marginLeft = ((backgroundImage.clientWidth - osmoe.clientWidth) / 3.4);
+    osmoe.style.height = osmoe.clientWidth;
+    backgroundImage.style.marginBottom = "-70%";
+
+    console.log(document.getElementsByTagName("BODY")[0].clientWidth + ", " + document.getElementsByTagName("BODY")[0].clientHeight);
 
 
     //add listeners to buttons
@@ -162,17 +172,70 @@ function initialize () {
     happyARBtn.addEventListener("click", addHappyGoal, false);
     waterARBtn.addEventListener("click", addWaterGoal, false);
     foodARBtn.addEventListener("click", addFoodGoal, false);
+    document.getElementsByTagName("BODY")[0].onresize = function() {adjustSize()};
 
+}
+
+function adjustSize() {
+
+    //adjust profile button to always be a circle
+    profileWidth = screen.width / 12;
+    profileWidth += "px";
+    profileHeight = profileWidth;
+    profileWidth = "width: " + profileWidth;
+    profileWidth += ";height: " + profileHeight;
+    profileBtn.setAttribute("style", profileWidth);
+
+    statContainer.style.width = "35%";
+    statContainerWidth = statContainer.offsetWidth;
+    statContainerHeight = statContainerWidth * 0.6;
+    statContainerWidth += "px";
+
+    statContainerHeight += "px";
+    statContainerWidth = "width: " + statContainerWidth + ";height: " + statContainerHeight;
+    statContainer.setAttribute("style", statContainerWidth);
+
+    happyLabel.style.fontSize = (happyBtn.clientWidth * 0.09);
+    waterLabel.style.fontSize = (waterBtn.clientWidth * 0.09);
+    foodLabel.style.fontSize = (foodBtn.clientWidth * 0.09);
+
+    happyArrow.style.width = (screen.width * 0.043);
+    waterArrow.style.width = (screen.width * 0.043);
+    foodArrow.style.width = (screen.width * 0.043);
+
+    statusLabel.style.fontSize = statContainer.offsetWidth * 0.05;
+    statContainer.height = statContainer.offsetWidth * 0.4;
+
+    happyBtn.style.height = happyBtn.clientWidth * 0.4;
+    waterBtn.style.height = waterBtn.clientWidth * 0.4;
+    foodBtn.style.height = foodBtn.clientWidth * 0.4;
+
+    happyBtn.style.width = waterBtn.style.width = foodBtn.style.width = "70%";
+
+    message.style.fontSize = screen.width / 35;
+
+    for (var i = 0; i < h3.length; i++) {
+        h3[i].style.fontSize = statContainer.offsetWidth * 0.037;
+    }
+
+    osmoeForeground.scrollLeft = backgroundImage.clientWidth / 3;
+    osmoe.style.marginLeft = ((backgroundImage.clientWidth - osmoe.clientWidth) / 3.4);
+    osmoe.style.height = osmoe.clientWidth;
+    backgroundImage.style.marginBottom = "-70%";
+
+    
+    
+    
 }
 
 function addHappyGoal() {
     if (happyARBtn.src.includes("plus.png")){
-        happyARBtn.src = "../static/images/minus.png";
+        happyARBtn.src = "../static/images/views/home/minus.png";
         happyGoal.style.backgroundColor = "#FFC100";
         happyGoal.style.color = "#FFFFFF";
     }
     else {
-        happyARBtn.src = "../static/images/plus.png";
+        happyARBtn.src = "../static/images/views/home/plus.png";
         happyGoal.value = "";
         happyGoal.style.backgroundColor = "#FFFFFF";
         happyGoal.style.color = "#000000";
@@ -181,12 +244,12 @@ function addHappyGoal() {
 
 function addWaterGoal() {
     if (waterARBtn.src.includes("plus.png")){
-        waterARBtn.src = "../static/images/minus.png";
+        waterARBtn.src = "../static/images/views/home/minus.png";
         waterGoal.style.backgroundColor = "#02AFEF";
         waterGoal.style.color = "#FFFFFF";
     }
     else {
-        waterARBtn.src = "../static/images/plus.png";
+        waterARBtn.src = "../static/images/views/home/plus.png";
         waterGoal.value = "";
         waterGoal.style.backgroundColor = "#FFFFFF";
         waterGoal.style.color = "#000000";
@@ -195,12 +258,12 @@ function addWaterGoal() {
 
 function addFoodGoal() {
     if (foodARBtn.src.includes("plus.png")){
-        foodARBtn.src = "../static/images/minus.png";
+        foodARBtn.src = "../static/images/views/home/minus.png";
         foodGoal.style.backgroundColor = "#93CF4E";
         foodGoal.style.color = "#FFFFFF";
     }
     else {
-        foodARBtn.src = "../static/images/plus.png";
+        foodARBtn.src = "../static/images/views/home/plus.png";
         foodGoal.value = "";
         foodGoal.style.backgroundColor = "#FFFFFF";
         foodGoal.style.color = "#000000";

@@ -3,22 +3,30 @@ $btnColor: #45546B;
 $fontColor: white;
 $btnRadius: 80px;
 
+.brianStuff {
+    background-color: $bgColor;
+    h2 {
+        margin: 13% 20% 0 0; 
+        font-weight: 600;
+        display:flex; 
+        width:30%; 
+        float:right; 
+        text-align:center;
+        
+    }
+    h3 {
+        font-size: 25px;
+        float: left;
+        margin-top: 3%;
+    }
+}
+
 body {
     background-color: $bgColor;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    
 }
-h2 {
-    margin: 13% 20% 0 0; 
-    display:flex; 
-    width:30%; 
-    float:right; 
-    text-align:center
-}
-h3 {
-    font-size: 25px;
-    float: left;
-}
+
 #exit {
     float: right;
     width: 5%;
@@ -105,6 +113,7 @@ h3 {
         margin-left: 70%;
         width: 30%;
         height: 100%;
+        overflow: auto;
     }
     &__stat {
         @extend #container;
@@ -143,32 +152,35 @@ h3 {
 }
 #message {
     position: fixed;
-    margin: 3.7% 0 0 13%;
+    margin: 3% 0 0 13%;
     color: $fontColor;
     font-size: 50px;
+    font-weight: 600;
 }
 #label {
     &__happy {
-        padding: 11% 25% 0 0; 
+        padding-right: 58%;
         margin: 0 0 0 0;
+        height: 50%;
     }
     &__water {
-        padding: 6% 18% 0 0; 
+        padding-right: 54%;
         margin: 0 0 0 0;
     }
     &__food {
-        padding: 11% 20% 0 0; 
+        padding: 11% 54% 0 0; 
         margin: 0 0 0 0;
     }
     &__status {
         padding: 2% 0 0 5%;
+        font-weight: 600;
     }
 }
 .label {
     height: 10%;
     font-size: 45px;
     display: inline-block;
-    margin-top: 15%;
+    margin-top: 13%;
     font-weight: bold;
     &__answer {
         @extend .label;
@@ -281,7 +293,9 @@ h3 {
     }
     &__happy {
         @extend #button;
+        display: flex;
         margin: 0 5% 5% 0;
+        vertical-align: middle;
     }
     &__water {
         @extend #button;
@@ -309,16 +323,44 @@ h3 {
     }
 }
 #osmoe {
-    width: 320px;
-    height: 320px;
+    width: 55%;
+    position: absolute;
+    z-index: 1;
     &__background {
         width: 100%;
         height: 100%;
-        background: $fontColor;
+        background-size: cover;
+        background-position-x: center;
         float: right;
+        text-align: center;
     }
     &__foreground {
-        margin: 90% 0 0 0;
-        width: 320px;
+        //display: flex;
+        justify-content: center;
+        margin: 0 0 0 0;
+        height: 105%;
+        width: 30%;
+        position: fixed;
+        overflow: auto;
+        text-align: center;
     }
+}
+
+#backgroundImage {
+    height: 97%;
+    position: relative;
+    margin-bottom: -400px;
+    text-align: center;
+
+}
+
+#window {
+    height: 97%;
+    position: relative;
+    margin-top: -568px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
 }
