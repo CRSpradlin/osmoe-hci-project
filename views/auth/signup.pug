@@ -1,16 +1,16 @@
-<form class="signup__form" action="/signup" method="post">
-    <h3>Create Your Own Osmoe Account!<span class="signup__form-close" onclick="hide('signup');">X<span></h3>
-    <span class="signup__form-error" id="signupError">A User with that email already has an account.</span>
-    <div class="signup__form-section">
-        <input class="signup__form-input" placeholder="Your Name" type="text" name="username"/>
+<form class="auth__form" action="/signup" method="post">
+    <h3><i class="auth__form-close" onclick="hide('signup');">close</i> Create Your Own Osmoe Account!</h3>
+    <span class="auth__form-error" id="signupError">A User with that email already has an account.</span>
+    <div class="auth__form-section">
+        <input class="auth__form-input" placeholder="Your Name" type="text" name="username"/>
     </div>
-    <div class="signup__form-section">
-        <input class="signup__form-input" placeholder="Email" type="text" name="email"/>
+    <div class="auth__form-section">
+        <input class="auth__form-input" placeholder="Email" type="text" name="email"/>
     </div>    
-    <div class="signup__form-section">
-        <input class="signup__form-input" placeholder="Password" type="password" name="password"/>
+    <div class="auth__form-section">
+        <input class="auth__form-input" placeholder="Password" type="password" name="password"/>
     </div>
-    <div class="signup__form-section">
-        <input class="signup__form-submit" type="submit" value="Sign Up"/>
+    <div class="auth__form-section">
+        <input class="auth__form-submit" type="submit" value="Sign Up"/>
     </div>
 </form>
