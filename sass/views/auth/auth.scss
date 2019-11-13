@@ -104,9 +104,11 @@
                     font-size: 3rem;
 
                     @include respond-to("small"){
-                        font-size: 3rem;
                         padding-top: 5%;
                         padding-bottom: .7vh;
+                    }
+                    @include respond-to("large"){
+                        font-size: 4rem;
                     }
                 }
                 &-button{
