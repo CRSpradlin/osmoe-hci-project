@@ -1,6 +1,17 @@
 @import "variables";
 @import "./external/w3.scss";
+@import "./external/google-icons.scss";
+
 @import "./views/auth/auth.scss";
-@import "./views/auth/login.scss";
-@import "./views/auth/signup.scss";
 @import "./views/home.scss";
+
+$global-font-size: 12px;
+html {
+    font-size: $global-font-size;
+    @include respond-to("large"){
+        font-size: $global-font-size * 1.65;
+    }
+    @include respond-to("medium"){
+        font-size: $global-font-size * 1.25;
+    }
+}
