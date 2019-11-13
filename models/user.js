@@ -8,7 +8,6 @@ var sequelize = new Sequelize('postgres://fvmxbgig:rdviDBcdyFPa2i27QMz-9q-kZyg1n
 var User = sequelize.define('users', {
     username: {
         type: Sequelize.STRING,
-        unique: true,
         allowNull: false
     },
     email: {
@@ -18,6 +17,10 @@ var User = sequelize.define('users', {
     },
     password: {
         type: Sequelize.STRING,
+        allowNull: false
+    },
+    goals:{
+        type: Sequelize.JSON,
         allowNull: false
     }
 }, {

@@ -1,4 +1,56 @@
+$global-fontSize: 16;
 $global-background: #68cafe;
 $auth-background: $global-background;
 $form-background: $auth-background;
 $button-background: #45546b;
+
+// @mixin breakpoint($point) {
+//     @if $point == desktop {
+//       @media (min-width: 70em) { @content ; }
+//    }
+//     @else if $point == laptop {
+//       @media (min-width: 64em) { @content ; }
+//    }
+//      @else if $point == tablet {
+//       @media (min-width: 50em) { @content ; }
+//    }
+//     @else if $point == phablet {
+//       @media (min-width: 37.5em)  { @content ; }
+//    }
+//    @else if $point == mobileonly {
+//       @media (max-width: 37.5em)  { @content ; }
+ 
+//    }
+//  }
+
+$breakpoints: (
+//   // 'small':  ( max-width:  767px ),
+//   // 'medium': ( min-width:  992px ),
+//   // 'large':  ( min-width: 1200px )
+// Extra small devices (portrait phones, less than 576px)
+
+// Small devices (landscape phones, 576px and up)
+'small': (max-width: 767.98px),
+
+// Medium devices (tablets, 768px and up)
+'medium': (min-width: 768px) and (max-width: 991.98px),
+
+// Large devices (desktops, 992px and up)
+'large': (min-width: 992px),
+) !default;
+
+@mixin respond-to($breakpoint) {
+    // If the key exists in the map
+    @if map-has-key($breakpoints, $breakpoint) {
+      // Prints a media query based on the value
+      @media #{inspect(map-get($breakpoints, $breakpoint))} {
+        @content;
+      }
+    }
+   
+    // If the key doesn't exist in the map
+    @else {
+      @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+          + "Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+  }

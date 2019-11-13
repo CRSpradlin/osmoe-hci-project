@@ -1,9 +1,16 @@
 extends ../base.pug
 block extrahead
     script(src="/static/js/views/auth/animate_modal.js")
+    script(src="/static/js/views/auth/mobile_slide-menu.js")
 block body
+    <div class="auth__mobile-aside">
+        <p style="color:white;">hi</p>
+    </div>
     <div class="auth">
         <div class="auth__header">
+            <div class="auth__mobile-header">
+                <i onclick="toggleSlideMenu()" class="auth__mobile-header-hamburger">menu</i>
+            </div>
             <div class="auth__header-title">Welcome to Osmoe Sam</div>
 
             <div class="auth__header-nav">
@@ -11,7 +18,25 @@ block body
                 <div onclick="reveal('login')" class="auth__header-nav-item">Log In</div>
             </div>
         </div>
-    
+        <div class="auth__container">
+            <div class="auth__container-getstarted">
+                <div class="auth__container-getstarted-center">
+                    <span>
+                        <p>Use Osmoe Sam to get your daily routines knocked out!</p>
+                        <div onclick="reveal('signup')" class="auth__container-getstarted-center-button">Get Started!</div>
+                    </span>
+                </div>
+                <img class="auth__container-getstarted-bottomleft" src="/static/penguin/osmoe/stationary/OsmoeSamX1024__half.png" />
+            </div>
+            <div class="auth__container-section">
+            </div>
+            <div class="auth__container-section">
+            </div>
+            <div class="auth__container-section">
+            </div>
+        </div>
+
+        //-Modals----------------------------------------------------------------------------------------------------------------------------------------------------------------------------      
         <div id="signupModal" class="auth__modals-signupModal">
             <div class="auth__modals-signupModal-content">
                 include signup.pug 
@@ -25,15 +50,8 @@ block body
         </div>
     </div>
 append extrajs
+    script(src="/static/js/views/auth/reveal_hide.js")
     script
-        |function reveal(id_prefix){
-        |    document.getElementById(id_prefix+"Modal").style.display = "block";
-        |    setTimeout(function(){animate_display(".auth__modals-"+id_prefix+"Modal-content","show");}, 30);
-        |}
-        |function hide(id_prefix){
-        |    animate_display(".auth__modals-"+id_prefix+"Modal-content","hide");
-        |    $('.auth__modals-'+id_prefix+'Modal-content').one('transitionend',function(){document.getElementById(id_prefix+"Modal").style.display = "none";});
-        |}
         if modal
             | reveal("#{modal}");
         if login_error
