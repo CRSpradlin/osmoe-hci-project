@@ -3,20 +3,28 @@ $btnColor: #45546B;
 $fontColor: white;
 $btnRadius: 80px;
 
+.brianStuff {
+    background-color: $bgColor;
+    h2 {
+        margin: 13% 20% 0 0; 
+        font-weight: 600;
+        display:flex; 
+        width:30%; 
+        float:right; 
+        text-align:center;
+        
+    }
+    h3 {
+        font-size: 25px;
+        float: left;
+        margin-top: 3%;
+    }
+}
+
 body {
     background-color: $bgColor;
-    font-family: Arial, Helvetica, sans-serif;
-}
-h2 {
-    margin: 13% 20% 0 0; 
-    display:flex; 
-    width:30%; 
-    float:right; 
-    text-align:center
-}
-h3 {
-    font-size: 25px;
-    float: left;
+    margin: 0;
+    
 }
 
 #exit {
@@ -28,7 +36,6 @@ h3 {
         filter: invert(100%);
     }
 }
-
 #addRemove {
     float: right;
     width: 7%;
@@ -93,72 +100,92 @@ h3 {
     }
 
 }
-
-#messageContainer {
-    width:60%;
-    float: left;
-}
-#message {
-    margin: 5.5% 0 0 5%;
-    color: $fontColor;
-    font-size: 50px;
-}
-
-#label {
+#container {
+    position: fixed;
+    &__input {
+        @extend #container;
+        margin:13% -2% -5% -8%; 
+        width: 70%; 
+        height:70%;
+    }
+    &__osmoe {
+        @extend #container;
+        margin-left: 70%;
+        width: 30%;
+        height: 100%;
+        overflow: auto;
+    }
+    &__stat {
+        @extend #container;
+        margin:9.5% 0 0 33%;
+        width: 35%;
+        height: 42%;
+        background: #5E7989;
+        color: $fontColor;
+        overflow: auto;
+    }
     &__happy {
-        margin: 12.5% 25% 0 0; 
+        margin: 5% 0 17% 5%;
     }
     &__water {
-        margin: 8% 23% 0 0;  
+        margin: 0 0 29% 5%;
     }
-    &__status {
-        margin: 5% 0 0 5%;
+    &__food {
+        margin: 0 0 5% 5%;
+    }
+    &__upgradeBtns {
+        @extend #container;
+        width:20.5%;
+        height: 60%;
+        margin:10% 0 0 10%;
+        color: $fontColor; 
+    }
+    &__answer {
+        width: 70%;
+        margin-left: 15%;
+        margin-top: 15%;
+    }
+    &__message {
+        width:60%;
+        float: left;
     }
 }
-
+#message {
+    position: fixed;
+    margin: 3% 0 0 13%;
+    color: $fontColor;
+    font-size: 50px;
+    font-weight: 600;
+}
+#label {
+    &__happy {
+        padding-right: 58%;
+        margin: 0 0 0 0;
+        height: 50%;
+    }
+    &__water {
+        padding-right: 54%;
+        margin: 0 0 0 0;
+    }
+    &__food {
+        padding: 11% 54% 0 0; 
+        margin: 0 0 0 0;
+    }
+    &__status {
+        padding: 2% 0 0 5%;
+        font-weight: 600;
+    }
+}
 .label {
     height: 10%;
     font-size: 45px;
     display: inline-block;
-    margin-top: 15%;
+    margin-top: 13%;
     font-weight: bold;
     &__answer {
         @extend .label;
     }
 }
-
-#inputContainer {
-    margin:7% -2% -5% -8%; 
-    float:left; 
-    width: 70%; 
-    height:70%;
-}
-
-#osmoeContainer {
-    margin: -7.27% -0.4% 0 0;
-    float: right;
-    width: 30%;
-    height: 102.65%;
-    background: black;
-    overflow: auto;
-}
-
-#statContainer {
-    margin:12% 0 0 0;
-    width: 50%;
-    height: 60%;
-    background: #5E7989;
-    color: $fontColor;
-    overflow: auto;
-}
-
-
-#happyContainer {
-    margin: 5% 0 17% 5%;
-}
-
-
-
 .barContainer {
     background: black;
     float: right;
@@ -167,7 +194,6 @@ h3 {
     overflow: auto;
     margin: 3% 5% 0 0;
 }
-
 #bar {
     height: 100%;
     width: 90%;
@@ -186,32 +212,6 @@ h3 {
         background: #93CF4E;
     }
 }
-
-#waterContainer {
-    margin: 0 0 29% 5%;
-}
-
-#foodContainer {
-    margin: 0 0 5% 5%;
-}
-#upgradeBtns {
-    float:left;
-    width:35%;
-    margin:10% 0 0 5%;
-    color: $fontColor; 
-}
-#overlayShadow {
-    position: fixed; 
-    display: none; 
-    width: 100%; 
-    height: 100%; 
-    background: rgba(0,0,0,0.5);
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2; 
-}
-
 #overlay {
     position: fixed; 
     display: none; 
@@ -221,24 +221,31 @@ h3 {
     left: 15%;
     background: $bgColor; 
     z-index: 3; 
+    &__title {
+        color: $fontColor;
+        font-size: 50px;
+        width: 90%;
+        margin: 8% 0 0 15%;
+    }
+    &__question{
+        color: $fontColor;
+        font-size: 30px;
+        width: 70%;
+        margin: 2% 0 0 15%;
+        align-content: center;
+    }
+    &__shadow {
+        @extend #overlay;
+        width: 100%; 
+        height: 100%; 
+        background: rgba(0,0,0,0.5);
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 2; 
+    }
 }
-
-#overlayTitle {
-    color: $fontColor;
-    font-size: 50px;
-    width: 90%;
-    margin: 8% 0 0 15%;
-}
-
-#overlayQuest{
-    color: $fontColor;
-    font-size: 30px;
-    width: 70%;
-    margin: 2% 0 0 15%;
-    align-content: center;
-}
-
-
 #arrow {
     width: 30%;
     height: 50%;
@@ -256,13 +263,6 @@ h3 {
         filter: invert(70%) sepia(12%) saturate(1927%) hue-rotate(46deg) brightness(108%) contrast(83%);
     }
 }
-
-#answerContainer {
-    width: 70%;
-    margin-left: 15%;
-    margin-top: 15%;
-}
-
 #button {
     width: 70%;
     height: 20%;
@@ -277,8 +277,8 @@ h3 {
     }
     &__profile {
         @extend #button;
-        width: 8%;
-        height: 16%;
+        position: fixed;
+        height: 150px;
         margin: 1% 0 0 1%;
         border-radius: 100%;
         background: white;
@@ -293,7 +293,9 @@ h3 {
     }
     &__happy {
         @extend #button;
+        display: flex;
         margin: 0 5% 5% 0;
+        vertical-align: middle;
     }
     &__water {
         @extend #button;
@@ -320,15 +322,45 @@ h3 {
         height: 100%;
     }
 }
-
-#osmoeBackground {
-    width: 98%;
-    height: 100%;
-    float: right;
-    background: $fontColor;
+#osmoe {
+    width: 55%;
+    position: absolute;
+    z-index: 1;
+    &__background {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position-x: center;
+        float: right;
+        text-align: center;
+    }
+    &__foreground {
+        //display: flex;
+        justify-content: center;
+        margin: 0 0 0 0;
+        height: 105%;
+        width: 30%;
+        position: fixed;
+        overflow: auto;
+        text-align: center;
+    }
 }
-#osmoeForeground {
-    margin: 90% 0 0 20%;
-    float: left;
+
+#backgroundImage {
+    height: 97%;
+    position: relative;
+    margin-bottom: -400px;
+    text-align: center;
+
 }
 
+#window {
+    height: 97%;
+    position: relative;
+    margin-top: -568px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
