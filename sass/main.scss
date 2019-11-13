@@ -8,10 +8,10 @@
 $global-font-size: 12px;
 html {
     font-size: $global-font-size;
-    @include respond-to("large"){
-        font-size: $global-font-size * 1.65;
-    }
-    @include respond-to("medium"){
-        font-size: $global-font-size * 1.25;
-    }
+    // @include respond-to("large"){
+    //     font-size: $global-font-size * 1.65;
+    // }
+    // @include respond-to("medium"){
+    //     font-size: $global-font-size * 1.25;
+    // }
 }

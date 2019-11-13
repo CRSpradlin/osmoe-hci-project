@@ -21,8 +21,7 @@
 
             &-hamburger{
                 @extend .material-icons, .md-48;
-                color: white;
-                position: fixed;
+                color: white; 
                 vertical-align: middle;
 
                 &:hover{
@@ -58,11 +57,7 @@
             float: left;
             
             @include respond-to('small'){
-                width: 100%;
-                float: none;
-                position: fixed;
-                vertical-align: middle;
-                padding: unset;
+                display: none;
             }
         }
         &-nav{ //should nav just be display none?
@@ -186,6 +181,10 @@
             @extend .w3-input, .w3-round;
             margin: auto;
             width: 50%;
+
+            @include respond-to("small"){
+                width: 100%;
+            }
         }
         &-submit{
             @extend .w3-button, .w3-round;
