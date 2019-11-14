@@ -50,43 +50,40 @@ body {
         }
     }
     &__water {
-        @extend #addRemove;
+        @extend #addRemove__happy;
         margin-top: 6.5%;
-        &:hover {
-            cursor: pointer;
-        }
     }
     &__food {
-        @extend #addRemove;
+        @extend #addRemove__happy;
         margin-top: 6.5%;
-        &:hover {
-            cursor: pointer;
-        }
     }
 }
 #goal {
     width: 80%;
     height: 20%;
-    margin-left: 7%;
     font-size: 40px;
     text-align: center;
     margin-top: 5%;
     border-radius: 10px;
     &__container {
+        text-align: center;
         margin-left: 10%;
         overflow: auto;
         width: 80%;
-        height: 70%;
+        height: 90%;
     }
     &__happy {
         @extend #goal;
-        margin-top: 2%;
+        margin-top: 1%;
+        height: 14%;
     }
     &__water {
         @extend #goal;
+        height: 14%;
     }
     &__food {
         @extend #goal;
+        height: 14%;
     }
 }
 #profilePic {
@@ -120,6 +117,7 @@ body {
         margin:9.5% 0 0 33%;
         width: 35%;
         height: 42%;
+        border-radius: 20px;
         background: #5E7989;
         color: $fontColor;
         overflow: auto;
@@ -142,8 +140,9 @@ body {
     }
     &__answer {
         width: 70%;
+        height: 80%;
         margin-left: 15%;
-        margin-top: 15%;
+        margin-top: 10%;
     }
     &__message {
         width:60%;
@@ -158,19 +157,6 @@ body {
     font-weight: 600;
 }
 #label {
-    &__happy {
-        padding-right: 58%;
-        margin: 0 0 0 0;
-        height: 50%;
-    }
-    &__water {
-        padding-right: 54%;
-        margin: 0 0 0 0;
-    }
-    &__food {
-        padding: 11% 54% 0 0; 
-        margin: 0 0 0 0;
-    }
     &__status {
         padding: 2% 0 0 5%;
         font-weight: 600;
@@ -217,19 +203,21 @@ body {
     display: none; 
     width: 70%; 
     height: 70%; 
+    border-radius: 40px;
     top: 15%;
     left: 15%;
     background: $bgColor; 
     z-index: 3; 
     &__title {
         color: $fontColor;
-        font-size: 50px;
+        font-size: 400%;
+        font-weight: 600;
         width: 90%;
         margin: 8% 0 0 15%;
     }
     &__question{
         color: $fontColor;
-        font-size: 30px;
+        font-size: 200%;
         width: 70%;
         margin: 2% 0 0 15%;
         align-content: center;
@@ -238,6 +226,7 @@ body {
         @extend #overlay;
         width: 100%; 
         height: 100%; 
+        border-radius: 0;
         background: rgba(0,0,0,0.5);
         top: 0;
         right: 0;
@@ -247,9 +236,8 @@ body {
     }
 }
 #arrow {
-    width: 30%;
     height: 50%;
-    margin: 10% 0 0 10%;
+    margin: 4% -6% 0 5%;
     &__happy {
         @extend #arrow;
         filter: invert(66%) sepia(90%) saturate(805%) hue-rotate(358deg) brightness(103%) contrast(105%);
@@ -267,7 +255,9 @@ body {
     width: 70%;
     height: 20%;
     border-radius: $btnRadius;
+    border-style: none;
     color: $fontColor;
+    font-weight: 600;
     background-color:$btnColor;
     overflow: auto;
     &:hover {
@@ -291,31 +281,35 @@ body {
             
         }
     }
+    &__submit {
+        @extend #button;
+        width: 25%;
+        height: 12%;
+        font-size: 300%;
+        margin-top: 4%;
+        border-style: none;
+        display: inline-block;
+    }
     &__happy {
         @extend #button;
         display: flex;
         margin: 0 5% 5% 0;
-        vertical-align: middle;
     }
     &__water {
-        @extend #button;
-        margin: 0 5% 5% 0;
+        @extend #button__happy;
     }
     &__food {
-        @extend #button;
-        margin: 0 5% 5% 0;
+        @extend #button__happy;
     }
     &__yes {
         @extend #button;
+        font-size: 300%;
         width: 30%;
         float: right;
-        text-align: center;
     }
     &__no {
-        @extend #button;
-        width: 30%;
+        @extend #button__yes;
         float: left;
-        text-align: center;
     }
     &__exit {
         width: 100%;
@@ -329,13 +323,10 @@ body {
     &__background {
         width: 100%;
         height: 100%;
-        background-size: cover;
-        background-position-x: center;
         float: right;
         text-align: center;
     }
     &__foreground {
-        //display: flex;
         justify-content: center;
         margin: 0 0 0 0;
         height: 105%;

@@ -29,34 +29,35 @@ body {
   width: 7%;
   height: 15%;
   margin-right: 5%; }
-  #addRemove__happy {
+  #addRemove__happy, #addRemove__water, #addRemove__food {
     margin-top: 3%; }
-    #addRemove__happy:hover {
+    #addRemove__happy:hover, #addRemove__water:hover, #addRemove__food:hover {
       cursor: pointer; }
   #addRemove__water {
     margin-top: 6.5%; }
-    #addRemove__water:hover {
-      cursor: pointer; }
   #addRemove__food {
     margin-top: 6.5%; }
-    #addRemove__food:hover {
-      cursor: pointer; }
 
 #goal, #goal__happy, #goal__water, #goal__food {
   width: 80%;
   height: 20%;
-  margin-left: 7%;
   font-size: 40px;
   text-align: center;
   margin-top: 5%;
   border-radius: 10px; }
   #goal__container {
+    text-align: center;
     margin-left: 10%;
     overflow: auto;
     width: 80%;
-    height: 70%; }
+    height: 90%; }
   #goal__happy {
-    margin-top: 2%; }
+    margin-top: 1%;
+    height: 14%; }
+  #goal__water {
+    height: 14%; }
+  #goal__food {
+    height: 14%; }
 
 #profilePic {
   width: 80%;
@@ -81,6 +82,7 @@ body {
     margin: 9.5% 0 0 33%;
     width: 35%;
     height: 42%;
+    border-radius: 20px;
     background: #5E7989;
     color: white;
     overflow: auto; }
@@ -97,8 +99,9 @@ body {
     color: white; }
   #container__answer {
     width: 70%;
+    height: 80%;
     margin-left: 15%;
-    margin-top: 15%; }
+    margin-top: 10%; }
   #container__message {
     width: 60%;
     float: left; }
@@ -109,19 +112,6 @@ body {
   color: white;
   font-size: 50px;
   font-weight: 600; }
-
-#label__happy {
-  padding-right: 58%;
-  margin: 0 0 0 0;
-  height: 50%; }
-
-#label__water {
-  padding-right: 54%;
-  margin: 0 0 0 0; }
-
-#label__food {
-  padding: 11% 54% 0 0;
-  margin: 0 0 0 0; }
 
 #label__status {
   padding: 2% 0 0 5%;
@@ -158,24 +148,27 @@ body {
   display: none;
   width: 70%;
   height: 70%;
+  border-radius: 40px;
   top: 15%;
   left: 15%;
   background: #68CAFE;
   z-index: 3; }
   #overlay__title {
     color: white;
-    font-size: 50px;
+    font-size: 400%;
+    font-weight: 600;
     width: 90%;
     margin: 8% 0 0 15%; }
   #overlay__question {
     color: white;
-    font-size: 30px;
+    font-size: 200%;
     width: 70%;
     margin: 2% 0 0 15%;
     align-content: center; }
   #overlay__shadow {
     width: 100%;
     height: 100%;
+    border-radius: 0;
     background: rgba(0, 0, 0, 0.5);
     top: 0;
     right: 0;
@@ -184,9 +177,8 @@ body {
     z-index: 2; }
 
 #arrow, #arrow__happy, #arrow__water, #arrow__food {
-  width: 30%;
   height: 50%;
-  margin: 10% 0 0 10%; }
+  margin: 4% -6% 0 5%; }
   #arrow__happy {
     filter: invert(66%) sepia(90%) saturate(805%) hue-rotate(358deg) brightness(103%) contrast(105%); }
   #arrow__water {
@@ -194,14 +186,16 @@ body {
   #arrow__food {
     filter: invert(70%) sepia(12%) saturate(1927%) hue-rotate(46deg) brightness(108%) contrast(83%); }
 
-#button, #button__profile, #button__happy, #button__water, #button__food, #button__yes, #button__no {
+#button, #button__profile, #button__submit, #button__happy, #button__water, #button__food, #button__yes, #button__no {
   width: 70%;
   height: 20%;
   border-radius: 80px;
+  border-style: none;
   color: white;
+  font-weight: 600;
   background-color: #45546B;
   overflow: auto; }
-  #button:hover, #button__profile:hover, #button__happy:hover, #button__water:hover, #button__food:hover, #button__yes:hover, #button__no:hover {
+  #button:hover, #button__profile:hover, #button__submit:hover, #button__happy:hover, #button__water:hover, #button__food:hover, #button__yes:hover, #button__no:hover {
     background: white;
     color: #45546B;
     cursor: pointer; }
@@ -217,22 +211,22 @@ body {
     overflow: auto; }
     #button__profile:hover {
       background: black; }
-  #button__happy {
+  #button__submit {
+    width: 25%;
+    height: 12%;
+    font-size: 300%;
+    margin-top: 4%;
+    border-style: none;
+    display: inline-block; }
+  #button__happy, #button__water, #button__food {
     display: flex;
-    margin: 0 5% 5% 0;
-    vertical-align: middle; }
-  #button__water {
     margin: 0 5% 5% 0; }
-  #button__food {
-    margin: 0 5% 5% 0; }
-  #button__yes {
+  #button__yes, #button__no {
+    font-size: 300%;
     width: 30%;
-    float: right;
-    text-align: center; }
+    float: right; }
   #button__no {
-    width: 30%;
-    float: left;
-    text-align: center; }
+    float: left; }
   #button__exit {
     width: 100%;
     height: 100%; }
@@ -244,8 +238,6 @@ body {
   #osmoe__background {
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position-x: center;
     float: right;
     text-align: center; }
   #osmoe__foreground {

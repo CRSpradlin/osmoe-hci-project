@@ -1,4 +1,3 @@
-
 extends base.pug
 
 block title
@@ -11,19 +10,15 @@ block body
       #exit
         img(id="button__exit" src="/static/images/views/home/exit.png")
       h1(id='overlay__title')
-      h3(id='overlay__question')
+      h4(id='overlay__question')
       #container__answer
-        #button__yes
-          .label__answer(id='yesBtn') Yes
-        #button__no
-          .label__answer(id='noBtn') No
+        button(id='button__yes') Yes
+        button(id='button__no') No
       #goal__container 
         input(type='text' value='Happiness Goal' id='goal__happy')
-        img(id="addRemove__happy" src="/static/images/views/home/plus.png")
         input(type='text' value='Water Goal' id='goal__water')
-        img(id="addRemove__water" src="/static/images/views/home/plus.png")
         input(type='text' value='Food Goal' id='goal__food')
-        img(id="addRemove__food" src="/static/images/views/home/plus.png")
+        input(type='submit' id='button__submit' value='Submit')
     #overlay__shadow
     #button__profile
       img(src="/static/images/views/home/defaultProfilePic.png" id='profilePic')
@@ -31,15 +26,15 @@ block body
       h1(id='message')= message
     #container__input
       #container__upgradeBtns
-        #button__happy 
-          img(src="/static/images/views/home/upArrow.svg" id="arrow__happy")
-          h2(id='label__happy')= happinessBtn
-        #button__water
-          img(src="/static/images/views/home/upArrow.svg" id="arrow__water")
-          h2(id='label__water')= waterBtn
-        #button__food
-          img(src="/static/images/views/home/upArrow.svg" id="arrow__food")
-          h2(id='label__food')= foodBtn
+        <button id='button__happy'>
+          <img src="/static/images/views/home/upArrow.svg" id='arrow__happy'>Increase Happiness
+        </button>
+        <button id='button__water'>
+          <img src="/static/images/views/home/upArrow.svg" id='arrow__water'>Give Osmoe Water
+        </button>
+        <button id='button__food'>
+          <img src="/static/images/views/home/upArrow.svg" id='arrow__food'>Give Osmoe Food
+        </button>
       #container__stat
         h1(id='label__status')= statusLbl
         #container__happy
@@ -59,6 +54,3 @@ block body
         #osmoe__foreground
           img(src="/static/penguin/background/defaultBedroom.gif" id="backgroundImage")
           img(src="/static/penguin/osmoe/stationary/OSIdleX11.gif" id='osmoe')
-           
-      
-
