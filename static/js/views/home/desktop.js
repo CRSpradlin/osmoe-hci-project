@@ -266,7 +266,7 @@ function loadProfileWindow() {
 
 function loadHappyWindow() {
     overlayTitle.innerHTML = "Increase Happiness:";
-    overlayQuest.innerHTML = "Have you completed your happiness motivational goal of a b a b a b a b";
+    overlayQuest.innerHTML = "Have you completed your happiness motivational goal of " + happyGoal.value + " to increase Osmoe's Happiness?";
     goalContainer.style.display = "none";
     yesBtn.style.display = "block";
     noBtn.style.display = "block";
@@ -276,7 +276,7 @@ function loadHappyWindow() {
 
 function loadWaterWindow() {
     overlayTitle.innerHTML = "Give Osmoe Water:";
-    overlayQuest.innerHTML = "Have you completed your water motivational goal of [Goal 2] to give Osmoe Water?";
+    overlayQuest.innerHTML = "Have you completed your water motivational goal of " + waterGoal.value + " to give Osmoe Water?";
     goalContainer.style.display = "none";
     yesBtn.style.display = "block";
     noBtn.style.display = "block";
@@ -286,7 +286,7 @@ function loadWaterWindow() {
 
 function loadFoodWindow() {
     overlayTitle.innerHTML = "Feed Osmoe:";
-    overlayQuest.innerHTML = "Have you completed your food motivational goal of [Goal 3] to feed Osmoe?";
+    overlayQuest.innerHTML = "Have you completed your food motivational goal of " + foodGoal.value + " to feed Osmoe?";
     goalContainer.style.display = "none";
     yesBtn.style.display = "block";
     noBtn.style.display = "block";
@@ -307,7 +307,8 @@ function completeGoal() {
     if (overlayTitle.innerHTML == "Increase Happiness:" && happyBar.style.width != '100%'){
         temp = happyBar.clientWidth;
         temp += (max/10);
-        temp = Math.floor(temp/max)*100;
+        temp = Math.floor((temp/max)*100);
+        
         var percent = temp + '%';
         happyBar.style.width = percent;
     }
@@ -315,7 +316,7 @@ function completeGoal() {
     if (overlayTitle.innerHTML == "Give Osmoe Water:" && waterBar.style.width != '100%'){
         temp = waterBar.clientWidth;
         temp += (max/10);
-        temp = Math.floor(temp/max)*100;
+        temp = Math.floor((temp/max)*100);
         var percent = temp + '%';
         waterBar.style.width = percent;
     }
@@ -323,7 +324,7 @@ function completeGoal() {
     if (overlayTitle.innerHTML == "Feed Osmoe:" && foodBar.style.width != '100%'){
         temp = foodBar.clientWidth;
         temp += (max/10);
-        temp = Math.floor(temp/max)*100;
+        temp = Math.floor((temp/max)*100);
         var percent = temp + '%';
         foodBar.style.width = percent;
     }

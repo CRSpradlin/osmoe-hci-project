@@ -29,6 +29,8 @@ body {
 
 #exit {
     float: right;
+    margin-right: 2%;
+    margin-top: 1%;
     width: 5%;
     height: 10%;
     &:hover {
@@ -182,7 +184,7 @@ body {
 }
 #bar {
     height: 100%;
-    width: 90%;
+    width: 80%;
     float: right;
 
     &__happy {

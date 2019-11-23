@@ -18,6 +18,8 @@ body {
 
 #exit {
   float: right;
+  margin-right: 2%;
+  margin-top: 1%;
   width: 5%;
   height: 10%; }
   #exit:hover {
@@ -134,7 +136,7 @@ body {
 
 #bar, #bar__happy, #bar__water, #bar__food {
   height: 100%;
-  width: 90%;
+  width: 80%;
   float: right; }
   #bar__happy {
     background: #FFC001; }
