@@ -2,10 +2,11 @@
 extends base.pug
 
 block title
-  title Home
+  title="Home"
 block body
   block extrajs
-  script(src='/static/js/views/home/desktop.js')
+    script(src='/static/js/views/home/desktop.js')
+    script(src='/static/js/views/home/osmoeActions.js')
   .brianStuff
     #overlay
       #exit
@@ -28,37 +29,37 @@ block body
     #button__profile
       img(src="/static/images/views/home/defaultProfilePic.png" id='profilePic')
     #messageContainer
-      h1(id='message')= message
+      h1(id='message')= "Osmoe's Daily Inspirational Quote:"
     #container__input
       #container__upgradeBtns
         #button__happy 
           img(src="/static/images/views/home/upArrow.svg" id="arrow__happy")
-          h2(id='label__happy')= happinessBtn
+          h2(id='label__happy')= "Increase Happiness"
         #button__water
           img(src="/static/images/views/home/upArrow.svg" id="arrow__water")
-          h2(id='label__water')= waterBtn
+          h2(id='label__water')= "Give Osmoe Water"
         #button__food
           img(src="/static/images/views/home/upArrow.svg" id="arrow__food")
-          h2(id='label__food')= foodBtn
+          h2(id='label__food')= "Feed Osmoe"
       #container__stat
-        h1(id='label__status')= statusLbl
+        h1(id='label__status')= "Osmoe's Status:"
         #container__happy
-          h3= happyLbl
+          h3= "Happiness"
           .barContainer(id='container__bar')
             #bar__happy
         #container__water
-          h3= waterLbl
+          h3= "Water"
           .barContainer
             #bar__water
         #container__food
-          h3= foodLbl
+          h3= "Food"
           .barContainer
             #bar__food
     #container__osmoe
       #osmoe__background
         #osmoe__foreground
           img(src="/static/penguin/background/defaultBedroom.gif" id="backgroundImage")
-          img(src="/static/penguin/osmoe/stationary/OSIdleX11.gif" id='osmoe')
+          img(src="/static/penguin/osmoe/animated/OSIdleX11.gif" id='osmoe')
            
       
 
