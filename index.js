@@ -61,10 +61,33 @@ var sessionChecker = (req, res, next) => {
 
 
 // route for Home-Page
-app.get('/', sessionChecker, (req, res) => {
+app.all('/', sessionChecker, (req, res) => {
     res.redirect('/dashboard');
 });
 
+app.route('/dateUpdate')
+    .post((req, res) => {
+        var goalToUpdate = req.body.dateToUpdate;
+        console.log(goalToUpdate=="happy");
+        let user = req.session.user;
+        let goals = user.goals;
+        if(goalToUpdate=="happy"){ //goal1
+            goals.goal1.date = new Date().getTime();
+        }
+        if(goalToUpdate=="water"){ //goal2
+            goals.goal2.date = new Date().getTime();
+        }
+        if(goalToUpdate=="food"){ //goal3
+            goals.goal3.date = new Date().getTime();
+        }
+        User.update(
+            {goals: goals},
+            {where: {email: user.email}}
+          )
+          .then(() => {
+              res.redirect('/dashboard');
+          });
+    });
 
 // route for user signup
 app.route('/signup')
@@ -78,7 +101,21 @@ app.route('/signup')
                 User.create({
                     username: req.body.username,
                     email: req.body.email,
-                    password: req.body.password
+                    password: req.body.password,
+                    goals: {
+                        "goal1": {
+                            "message": "",
+                            "date": ""
+                        },
+                        "goal2": {
+                            "message": "",
+                            "date": ""
+                        },
+                        "goal3": {
+                            "message": "",
+                            "date": ""
+                        }
+                    }
                 })
                 .then(newUser => {
                     req.session.user = newUser.dataValues;
@@ -114,16 +151,48 @@ app.route('/login')
     });
 
 // route for user's dashboard
-app.get('/dashboard', (req, res) => {
-    if (req.session.user && req.cookies.user_sid) {
-        let user = req.session.user;
-        console.log(user.email + " has logged in...");
-        res.render('./desktop.pug', {title:"Home", message:"Osmoe's Daily Inspirational Quote:", happinessBtn:"Increase Happiness", 
-        waterBtn:"Give Osmoe Water", foodBtn:"Feed Osmoe", statusLbl:"Osmoe's Status:", happyLbl:"Happiness", waterLbl:"Water", foodLbl:"Food"});
-    } else {
-        res.render('./auth/auth.pug');
-    }
-});
+app.route('/dashboard')
+    .get((req, res) => {
+        if (req.session.user && req.cookies.user_sid) {
+            let user = req.session.user;
+            console.log(user.email + " has logged in...");
+            //can determine new user because there are not three goals
+            res.render('./desktop.pug', {goals: user.goals});
+        } else {
+            res.render('./auth/auth.pug');
+        }
+    })
+    .post((req, res) => {
+        if(req.session.user && req.cookies.user_sid){
+            console.log('updated user goals');
+            let user = req.session.user,
+                goal1 = req.body.goal__happy,
+                goal2 = req.body.goal__water,
+                goal3 = req.body.goal__food;
+            let goals = user.goals;
+            if(goal1!=goals.goal1.message){
+                goals.goal1.date = new Date().getTime();
+                goals.goal1.message = goal1;
+            }
+            if(goal2!=goals.goal2.message){
+                goals.goal2.date = new Date().getTime();
+                goals.goal2.message = goal2;
+            }
+            if(goal3!=goals.goal3.message){
+                goals.goal3.date = new Date().getTime();
+                goals.goal3.message = goal3;
+            }
+            User.update(
+                {goals: goals},
+                {where: {email: user.email}}
+              )
+              .then(() => {
+                  res.redirect('/dashboard');
+              });
+        } else {
+            res.redirect('/');
+        }
+    });
 
 /*
 // route for user's dashboard

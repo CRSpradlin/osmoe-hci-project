@@ -4,27 +4,31 @@ extends base.pug
 block title
   title="Home"
 block body
-  block extrajs
+  block extrahead
     script(src='/static/js/views/home/desktop.js')
     script(src='/static/js/views/home/osmoeActions.js')
   .brianStuff
     #overlay
       #exit
-        img(id="button__exit" src="/static/images/views/home/exit.png")
+        i(id='exit')='close'
       h1(id='overlay__title')
       h3(id='overlay__question')
       #container__answer
-        #button__yes
-          .label__answer(id='yesBtn') Yes
-        #button__no
-          .label__answer(id='noBtn') No
-      #goal__container 
-        input(type='text' value='Happiness Goal' id='goal__happy')
-        img(id="addRemove__happy" src="/static/images/views/home/plus.png")
-        input(type='text' value='Water Goal' id='goal__water')
-        img(id="addRemove__water" src="/static/images/views/home/plus.png")
-        input(type='text' value='Food Goal' id='goal__food')
-        img(id="addRemove__food" src="/static/images/views/home/plus.png")
+        form(id="dateForm" action="/dateUpdate" method="POST")
+          input(type="text" id="dateToUpdate" name="dateToUpdate" style="display:none;")
+          input.button__yes.label__answer(type="submit" id='yesBtn' value="Yes")
+          #button__no
+            .label__answer(id='noBtn') No
+      #goal__container
+        form(id="form" action="/dashboard" method="post") 
+          input(type='text' placeholder='Happiness Goal' id='goal__happy' name='goal__happy' value=goals.goal1.message)
+          //- img(id="addRemove__happy" src="/static/images/views/home/plus.png")
+          input(type='text' placeholder='Water Goal' id='goal__water' name='goal__water' value=goals.goal2.message)
+          //- img(id="addRemove__water" src="/static/images/views/home/plus.png")
+          input(type='text' placeholder='Food Goal' id='goal__food' name='goal__food' value=goals.goal3.message)
+          //- img(id="addRemove__food" src="/static/images/views/home/plus.png")
+          br
+          input(id='goal__container-submit' type='submit' value='Submit')
     #overlay__shadow
     #button__profile
       img(src="/static/images/views/home/defaultProfilePic.png" id='profilePic')
@@ -60,6 +64,90 @@ block body
         #osmoe__foreground
           img(src="/static/penguin/background/defaultBedroom.gif" id="backgroundImage")
           img(src="/static/penguin/osmoe/animated/OSIdleX11.gif" id='osmoe')
-           
+  script.
+    let currWaterTime = parseInt("#{goals.goal2.date}");
+    let currHappyTime = parseInt("#{goals.goal1.date}");
+    let currFoodTime = parseInt("#{goals.goal3.date}");
+
+    initialGoalDecrease(currWaterTime, currFoodTime, currHappyTime);
+
+    let currWater = "#{goals.goal2.message}"
+    let currHappy = "#{goals.goal1.message}"
+    let currFood = "#{goals.goal3.message}"
+
+    if($('#goal__water').val()!=""){
+      document.getElementById('button__water').addEventListener("click", loadWaterWindow, false);      
+      $('#button__water').removeClass('w3-disabled');
+    } else {
+      $('#button__water').addClass('w3-disabled');
+    }
+    if($('#goal__happy').val()!=""){
+      document.getElementById('button__happy').addEventListener("click", loadHappyWindow, false);      
+      $('#button__happy').removeClass('w3-disabled');
+    } else {
+      $('#button__happy').addClass('w3-disabled');
+    }
+    if($('#goal__food').val()!=""){
+      document.getElementById('button__food').addEventListener("click", loadFoodWindow, false);      
+      $('#button__food').removeClass('w3-disabled');
+    } else {
+      $('#button__food').addClass('w3-disabled');
+    }
+    
+    $('#form').submit((event) => {
+      if($('#goal__food').val()=="" && $('#goal__happy').val()=="" && $('#goal__water').val()==""){
+        event.preventDefault();
+        alert("You must have at least one goal active!");
+      } else {
+        currFood = $('#goal__food').val();
+        currWater = $('#goal__happy').val();
+        currHappy = $('#goal__water').val();
+      }
+    });
+
+    document.getElementById('button__no').addEventListener("click", closeWindow, false);
+    document.getElementById('exit').addEventListener("click", closeWindow, false);
+
+    function closeWindow() {
+      overlay.style.display = "none";
+      overlayShadow.style.display = "none";
+      answerContainer.style.display = "block";
+      $('#goal__water').val(currWater);
+      $('#goal__happy').val(currHappy);
+      $('#goal__food').val(currFood);
+    }
+
+    function loadHappyWindow() {
+        $('#dateToUpdate').val('happy');
+        overlayTitle.innerHTML = "Increase Happiness:";
+        overlayQuest.innerHTML = "Have you completed your happiness motivational goal of "+$('#goal__happy').val()+" to make Osmoe Happy?";
+        goalContainer.style.display = "none";
+        yesBtn.style.display = "block";
+        noBtn.style.display = "block";
+        overlay.style.display = "block";
+        overlayShadow.style.display = "block";
+    }
+
+    function loadWaterWindow() {
+      $('#dateToUpdate').val('water');
+        overlayTitle.innerHTML = "Give Osmoe Water:";
+        overlayQuest.innerHTML = "Have you completed your water motivational goal of "+$('#goal__water').val()+" to give Osmoe Water?";
+        goalContainer.style.display = "none";
+        yesBtn.style.display = "block";
+        noBtn.style.display = "block";
+        overlay.style.display = "block";
+        overlayShadow.style.display = "block";
+    }
+
+    function loadFoodWindow() {
+      $('#dateToUpdate').val('food');
+        overlayTitle.innerHTML = "Feed Osmoe:";
+        overlayQuest.innerHTML = "Have you completed your food motivational goal of "+$('#goal__food').val()+" to feed Osmoe?";
+        goalContainer.style.display = "none";
+        yesBtn.style.display = "block";
+        noBtn.style.display = "block";
+        overlay.style.display = "block";
+        overlayShadow.style.display = "block";
+    }    
       
 

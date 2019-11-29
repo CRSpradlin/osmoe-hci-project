@@ -28,18 +28,11 @@ body {
 }
 
 #exit {
-    float: right;
-    width: 5%;
-    height: 10%;
-    &:hover {
-        cursor: pointer;
-        filter: invert(100%);
-    }
+    @extend .auth__form-close;
+    color: white;
 }
 #addRemove {
     float: right;
-    width: 7%;
-    height: 15%;
     margin-right: 5%;
     
     &__happy {
@@ -66,17 +59,30 @@ body {
 }
 #goal {
     width: 80%;
-    height: 20%;
-    margin-left: 7%;
-    font-size: 40px;
+    height: 4rem;
     text-align: center;
     margin-top: 5%;
     border-radius: 10px;
+    font-size: 2rem;
+
+    @include respond-to('small'){
+        width:100%;
+    }
     &__container {
-        margin-left: 10%;
+        margin: auto;
         overflow: auto;
         width: 80%;
         height: 70%;
+        text-align: center;
+
+        &-submit{
+            @extend .w3-button, .w3-round-xlarge;
+            margin:auto;
+            margin-top:1rem;
+            background-color: $btnColor;
+            color: white;
+            font-size: 2rem;
+        }
     }
     &__happy {
         @extend #goal;
@@ -180,7 +186,7 @@ body {
     height: 10%;
     font-size: 45px;
     display: inline-block;
-    margin-top: 13%;
+    margin-top: 1rem;
     font-weight: bold;
     &__answer {
         @extend .label;
@@ -196,7 +202,7 @@ body {
 }
 #bar {
     height: 100%;
-    width: 90%;
+    width: 100%;
     float: right;
 
     &__happy {
@@ -213,6 +219,7 @@ body {
     }
 }
 #overlay {
+    @extend .w3-round-xlarge, .w3-padding;
     position: fixed; 
     display: none; 
     width: 70%; 
@@ -235,9 +242,11 @@ body {
         align-content: center;
     }
     &__shadow {
-        @extend #overlay;
+        position: fixed;
+        display: none;
         width: 100%; 
-        height: 100%; 
+        height: 100%;
+        background-color: $bgColor; 
         background: rgba(0,0,0,0.5);
         top: 0;
         right: 0;
@@ -305,12 +314,6 @@ body {
         @extend #button;
         margin: 0 5% 5% 0;
     }
-    &__yes {
-        @extend #button;
-        width: 30%;
-        float: right;
-        text-align: center;
-    }
     &__no {
         @extend #button;
         width: 30%;
@@ -321,6 +324,14 @@ body {
         width: 100%;
         height: 100%;
     }
+}
+.button__yes {
+    @extend #button;
+    border: none;
+    width: 30%;
+    float: right;
+    text-align: center;
+    margin-top: 0;
 }
 #osmoe {
     width: 55%;
