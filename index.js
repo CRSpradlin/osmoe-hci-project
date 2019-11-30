@@ -66,19 +66,20 @@ app.all('/', sessionChecker, (req, res) => {
 });
 
 app.route('/dateUpdate')
-    .post((req, res) => {
+    .post(sessionChecker, (req, res) => {
         var goalToUpdate = req.body.dateToUpdate;
+        let currTime = new Date().getTime();
         console.log(goalToUpdate=="happy");
         let user = req.session.user;
         let goals = user.goals;
-        if(goalToUpdate=="happy"){ //goal1
-            goals.goal1.date = new Date().getTime();
+        if(goalToUpdate=="happy"&&(goals.goal1.date+86400000)<currTime){ //goal1
+            goals.goal1.date = goals.goal1.date+86400000;
         }
-        if(goalToUpdate=="water"){ //goal2
-            goals.goal2.date = new Date().getTime();
+        if(goalToUpdate=="water"&&(goals.goal2.date+86400000<currTime)){ //goal2
+            goals.goal2.date = goals.goal2.date+86400000;
         }
-        if(goalToUpdate=="food"){ //goal3
-            goals.goal3.date = new Date().getTime();
+        if(goalToUpdate=="food"&&(goals.goal3.date+86400000<currTime)){ //goal3
+            goals.goal3.date = goals.goal3.date+86400000;
         }
         User.update(
             {goals: goals},

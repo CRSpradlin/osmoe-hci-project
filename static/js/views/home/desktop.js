@@ -297,7 +297,53 @@ function initialGoalDecrease(waterTime, foodTime, happyTime){
             console.log('percent: ' + percent + ", max: " + max);
             happyBar.style.width=percent;
         }
+    }
+    if (waterBar.style.width != '0%'){
+        width = waterBar.clientWidth;
+        temp = currTimeTime - waterTime;
+        temp = Math.abs(parseInt(temp / (1000*3600*24)));
+        console.log("days since last water: " + temp);
+        if(temp>10){
+            width = 0;
+        } else {
+            width -= (max/10)*temp
+            console.log('width: ' + width);
+            width = (width/max)*100;
+            var percent = width+'%';
+            console.log('percent: ' + percent + ", max: " + max);
+            waterBar.style.width=percent;
+        }
+    }
+    if (foodBar.style.width != '0%'){
+        width = foodBar.clientWidth;
+        temp = currTimeTime - foodTime;
+        temp = Math.abs(parseInt(temp / (1000*3600*24)));
+        console.log("days since last food: " + temp);
+        if(temp>10){
+            width = 0;
+        } else {
+            width -= (max/10)*temp
+            console.log('width: ' + width);
+            width = (width/max)*100;
+            var percent = width+'%';
+            console.log('percent: ' + percent + ", max: " + max);
+            foodBar.style.width=percent;
+        }
     }  
+}
+
+function initializeOsmoe(){
+    let max = barContainer.clientWidth;
+    let waterPercent = Math.round((waterBar.clientWidth/max)*100);
+    let foodPercent = Math.round((foodBar.clientWidth/max)*100);
+    let happyPercent = Math.round((happyBar.clientWidth/max)*100);
+
+    if(waterPercent<70 || foodPercent<70 || happyPercent<70){
+        window.defaultOsmoe = "madOsmoe.gif";
+    }
+    if(waterPercent<5||foodPercent<5||happyPercent<5||(waterPercent+foodPercent+happyPercent)/3<50){
+        window.defaultOsmoe = "Sad_withShadowX10.gif";
+    }
 }
 
 function completeGoal() {

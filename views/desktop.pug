@@ -63,13 +63,14 @@ block body
       #osmoe__background
         #osmoe__foreground
           img(src="/static/penguin/background/defaultBedroom.gif" id="backgroundImage")
-          img(src="/static/penguin/osmoe/animated/OSIdleX11.gif" id='osmoe')
+          img(src="/static/penguin/osmoe/animated/OSIdleX11.gif" id='osmoe' onclick="osmoePoke()")
   script.
     let currWaterTime = parseInt("#{goals.goal2.date}");
     let currHappyTime = parseInt("#{goals.goal1.date}");
     let currFoodTime = parseInt("#{goals.goal3.date}");
 
     initialGoalDecrease(currWaterTime, currFoodTime, currHappyTime);
+    initializeOsmoe();
 
     let currWater = "#{goals.goal2.message}"
     let currHappy = "#{goals.goal1.message}"
