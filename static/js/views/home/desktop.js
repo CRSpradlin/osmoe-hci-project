@@ -282,7 +282,7 @@ function initialGoalDecrease(waterTime, foodTime, happyTime){
     var max = barContainer.clientWidth;
     var temp;
     var width;
-    if (happyBar.style.width != '0%'){
+    if (!$('#bar__happy').hasClass('w3-disabled')){
         width = happyBar.clientWidth;
         temp = currTimeTime - happyTime;
         temp = Math.abs(parseInt(temp / (1000*3600*24)));
@@ -293,12 +293,12 @@ function initialGoalDecrease(waterTime, foodTime, happyTime){
             width -= (max/10)*temp
             console.log('width: ' + width);
             width = (width/max)*100;
-            var percent = width+'%';
-            console.log('percent: ' + percent + ", max: " + max);
-            happyBar.style.width=percent;
         }
+        var percent = width+'%';
+        console.log('percent: ' + percent + ", max: " + max);
+        happyBar.style.width=percent;
     }
-    if (waterBar.style.width != '0%'){
+    if (!$('#bar__water').hasClass('w3-disabled')){
         width = waterBar.clientWidth;
         temp = currTimeTime - waterTime;
         temp = Math.abs(parseInt(temp / (1000*3600*24)));
@@ -309,12 +309,12 @@ function initialGoalDecrease(waterTime, foodTime, happyTime){
             width -= (max/10)*temp
             console.log('width: ' + width);
             width = (width/max)*100;
-            var percent = width+'%';
-            console.log('percent: ' + percent + ", max: " + max);
-            waterBar.style.width=percent;
         }
+        var percent = width+'%';
+        console.log('percent: ' + percent + ", max: " + max);
+        waterBar.style.width=percent;
     }
-    if (foodBar.style.width != '0%'){
+    if (!$('#bar__food').hasClass('w3-disabled')){
         width = foodBar.clientWidth;
         temp = currTimeTime - foodTime;
         temp = Math.abs(parseInt(temp / (1000*3600*24)));
@@ -325,10 +325,10 @@ function initialGoalDecrease(waterTime, foodTime, happyTime){
             width -= (max/10)*temp
             console.log('width: ' + width);
             width = (width/max)*100;
-            var percent = width+'%';
-            console.log('percent: ' + percent + ", max: " + max);
-            foodBar.style.width=percent;
         }
+        var percent = width+'%';
+        console.log('percent: ' + percent + ", max: " + max);
+        foodBar.style.width=percent;
     }  
 }
 

@@ -69,9 +69,6 @@ block body
     let currHappyTime = parseInt("#{goals.goal1.date}");
     let currFoodTime = parseInt("#{goals.goal3.date}");
 
-    initialGoalDecrease(currWaterTime, currFoodTime, currHappyTime);
-    initializeOsmoe();
-
     let currWater = "#{goals.goal2.message}"
     let currHappy = "#{goals.goal1.message}"
     let currFood = "#{goals.goal3.message}"
@@ -79,20 +76,26 @@ block body
     if($('#goal__water').val()!=""){
       document.getElementById('button__water').addEventListener("click", loadWaterWindow, false);      
       $('#button__water').removeClass('w3-disabled');
+      $('#bar__water').removeClass('w3-opacity');
     } else {
       $('#button__water').addClass('w3-disabled');
+      $('#bar__water').addClass('w3-opacity');
     }
     if($('#goal__happy').val()!=""){
       document.getElementById('button__happy').addEventListener("click", loadHappyWindow, false);      
       $('#button__happy').removeClass('w3-disabled');
+      $('#bar__happy').removeClass('w3-opacity');
     } else {
       $('#button__happy').addClass('w3-disabled');
+      $('#bar__happy').addClass('w3-opacity');
     }
     if($('#goal__food').val()!=""){
       document.getElementById('button__food').addEventListener("click", loadFoodWindow, false);      
       $('#button__food').removeClass('w3-disabled');
+      $('#bar__food').removeClass('w3-opacity');
     } else {
       $('#button__food').addClass('w3-disabled');
+      $('#bar__food').addClass('w3-opacity');
     }
     
     $('#form').submit((event) => {
@@ -149,6 +152,10 @@ block body
         noBtn.style.display = "block";
         overlay.style.display = "block";
         overlayShadow.style.display = "block";
-    }    
+    }
+
+
+    initialGoalDecrease(currWaterTime, currFoodTime, currHappyTime);
+    initializeOsmoe();
       
 
