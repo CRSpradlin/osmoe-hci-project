@@ -82,7 +82,7 @@ function initialize () {
     happyBtn= document.getElementById("button__happy");
     waterBtn = document.getElementById("button__water");
     foodBtn = document.getElementById("button__food");
-    yesBtn = document.getElementById("button__yes");
+    yesBtn = document.getElementById("yesBtn");
     noBtn = document.getElementById("button__no");
     exitBtn = document.getElementById("exit");
 
@@ -104,13 +104,13 @@ function initialize () {
     profileWidth += ";height: " + profileHeight;
     profileBtn.setAttribute("style", profileWidth);
 
-    //Adjust statcontainer to never be too wide or tall
-    statContainerWidth = statContainer.offsetWidth;
-    statContainerHeight = statContainerWidth * 0.6;
-    statContainerWidth += "px";
-    statContainerHeight += "px";
-    statContainerWidth = "width: " + statContainerWidth + ";height: " + statContainerHeight;
-    statContainer.setAttribute("style", statContainerWidth);
+    // //Adjust statcontainer to never be too wide or tall
+    // statContainerWidth = statContainer.offsetWidth;
+    // statContainerHeight = statContainerWidth * 0.6;
+    // statContainerWidth += "px";
+    // statContainerHeight += "px";
+    // statContainerWidth = "width: " + statContainerWidth + ";height: " + statContainerHeight;
+    // statContainer.setAttribute("style", statContainerWidth);
 
     happyBtn.style.fontSize = (happyBtn.clientWidth * 0.09);
     waterBtn.style.fontSize = (waterBtn.clientWidth * 0.09);
@@ -143,9 +143,6 @@ function initialize () {
 
     //add listeners to buttons
     profileBtn.addEventListener("click", loadProfileWindow, false);
-    happyBtn.addEventListener("click", loadHappyWindow, false);
-    waterBtn.addEventListener("click", loadWaterWindow, false);
-    foodBtn.addEventListener("click", loadFoodWindow, false);
     yesBtn.addEventListener("click", completeGoal, false);
     noBtn.addEventListener("click", closeWindow, false);
     exitBtn.addEventListener("click", closeWindow, false);
@@ -172,14 +169,14 @@ function adjustSize() {
     profileWidth += ";height: " + profileHeight;
     profileBtn.setAttribute("style", profileWidth);
 
-    statContainer.style.width = "35%";
-    statContainerWidth = statContainer.offsetWidth;
-    statContainerHeight = statContainerWidth * 0.6;
-    statContainerWidth += "px";
+    // statContainer.style.width = "35%";
+    // statContainerWidth = statContainer.offsetWidth;
+    // statContainerHeight = statContainerWidth * 0.6;
+    // statContainerWidth += "px";
 
-    statContainerHeight += "px";
-    statContainerWidth = "width: " + statContainerWidth + ";height: " + statContainerHeight;
-    statContainer.setAttribute("style", statContainerWidth);
+    // statContainerHeight += "px";
+    // statContainerWidth = "width: " + statContainerWidth + ";height: " + statContainerHeight;
+    // statContainer.setAttribute("style", statContainerWidth);
 
     happyBtn.style.fontSize = (happyBtn.clientWidth * 0.09);
     waterBtn.style.fontSize = (waterBtn.clientWidth * 0.09);
@@ -214,43 +211,47 @@ function adjustSize() {
     
 }
 
-function addHappyGoal() {
-    if(happyGoal.value.length > 0){
-        happyGoal.style.backgroundColor = "#FFC001";
-        happyGoal.style.color = "#FFFFFF";
-    }
+// function addHappyGoal() {
+//     if (happyARBtn.src.includes("plus.png")){
+//         happyARBtn.src = "../static/images/views/home/minus.png";
+//         happyGoal.style.backgroundColor = "#FFC100";
+//         happyGoal.style.color = "#FFFFFF";
+//     }
+//     else {
+//         happyARBtn.src = "../static/images/views/home/plus.png";
+//         happyGoal.value = "";
+//         happyGoal.style.backgroundColor = "#FFFFFF";
+//         happyGoal.style.color = "#000000";
+//     }
+// }
 
-}
+// function addWaterGoal() {
+//     if (waterARBtn.src.includes("plus.png")){
+//         waterARBtn.src = "../static/images/views/home/minus.png";
+//         waterGoal.style.backgroundColor = "#02AFEF";
+//         waterGoal.style.color = "#FFFFFF";
+//     }
+//     else {
+//         waterARBtn.src = "../static/images/views/home/plus.png";
+//         waterGoal.value = "";
+//         waterGoal.style.backgroundColor = "#FFFFFF";
+//         waterGoal.style.color = "#000000";
+//     }
+// }
 
-function editHappyGoal() {
-    happyGoal.style.backgroundColor = "#FFFFFF";
-    happyGoal.style.color = "#000000";
-}
-
-function addWaterGoal() {
-    if(waterGoal.value.length > 0){
-        waterGoal.style.backgroundColor = "#02AFEF";
-        waterGoal.style.color = "#FFFFFF";
-    }
-
-}
-
-function editWaterGoal() {
-    waterGoal.style.backgroundColor = "#FFFFFF";
-    waterGoal.style.color = "#000000";
-}
-
-function addFoodGoal() {
-    if(foodGoal.value.length > 0){
-        foodGoal.style.backgroundColor = "#93CF4E";
-        foodGoal.style.color = "#FFFFFF";
-    }
-}
-
-function editFoodGoal() {
-    foodGoal.style.backgroundColor = "#FFFFFF";
-    foodGoal.style.color = "#000000";
-}
+// function addFoodGoal() {
+//     if (foodARBtn.src.includes("plus.png")){
+//         foodARBtn.src = "../static/images/views/home/minus.png";
+//         foodGoal.style.backgroundColor = "#93CF4E";
+//         foodGoal.style.color = "#FFFFFF";
+//     }
+//     else {
+//         foodARBtn.src = "../static/images/views/home/plus.png";
+//         foodGoal.value = "";
+//         foodGoal.style.backgroundColor = "#FFFFFF";
+//         foodGoal.style.color = "#000000";
+//     }
+// }
 
 function loadProfileWindow() {
     overlayTitle.innerHTML = "Motivational Goals:";
@@ -264,70 +265,102 @@ function loadProfileWindow() {
     overlayTitle.style.marginTop = "3%";
 }
 
-function loadHappyWindow() {
-    overlayTitle.innerHTML = "Increase Happiness:";
-    overlayQuest.innerHTML = "Have you completed your happiness motivational goal of " + happyGoal.value + " to increase Osmoe's Happiness?";
-    goalContainer.style.display = "none";
-    yesBtn.style.display = "block";
-    noBtn.style.display = "block";
-    overlay.style.display = "block";
-    overlayShadow.style.display = "block";
+function initialGoalDecrease(waterTime, foodTime, happyTime){
+    initialize();
+    let currTimeTime = new Date().getTime();
+    var max = barContainer.clientWidth;
+    var temp;
+    var width;
+    if (!$('#bar__happy').hasClass('w3-disabled')){
+        width = happyBar.clientWidth;
+        temp = currTimeTime - happyTime;
+        temp = Math.abs(parseInt(temp / (1000*3600*24)));
+        console.log("days since last happy: " + temp);
+        if(temp>10){
+            width = 0;
+        } else {
+            width -= (max/10)*temp
+            console.log('width: ' + width);
+            width = (width/max)*100;
+        }
+        var percent = width+'%';
+        console.log('percent: ' + percent + ", max: " + max);
+        happyBar.style.width=percent;
+    }
+    if (!$('#bar__water').hasClass('w3-disabled')){
+        width = waterBar.clientWidth;
+        temp = currTimeTime - waterTime;
+        temp = Math.abs(parseInt(temp / (1000*3600*24)));
+        console.log("days since last water: " + temp);
+        if(temp>10){
+            width = 0;
+        } else {
+            width -= (max/10)*temp
+            console.log('width: ' + width);
+            width = (width/max)*100;
+        }
+        var percent = width+'%';
+        console.log('percent: ' + percent + ", max: " + max);
+        waterBar.style.width=percent;
+    }
+    if (!$('#bar__food').hasClass('w3-disabled')){
+        width = foodBar.clientWidth;
+        temp = currTimeTime - foodTime;
+        temp = Math.abs(parseInt(temp / (1000*3600*24)));
+        console.log("days since last food: " + temp);
+        if(temp>10){
+            width = 0;
+        } else {
+            width -= (max/10)*temp
+            console.log('width: ' + width);
+            width = (width/max)*100;
+        }
+        var percent = width+'%';
+        console.log('percent: ' + percent + ", max: " + max);
+        foodBar.style.width=percent;
+    }  
 }
 
-function loadWaterWindow() {
-    overlayTitle.innerHTML = "Give Osmoe Water:";
-    overlayQuest.innerHTML = "Have you completed your water motivational goal of " + waterGoal.value + " to give Osmoe Water?";
-    goalContainer.style.display = "none";
-    yesBtn.style.display = "block";
-    noBtn.style.display = "block";
-    overlay.style.display = "block";
-    overlayShadow.style.display = "block";
-}
+function initializeOsmoe(){
+    let max = barContainer.clientWidth;
+    let waterPercent = Math.round((waterBar.clientWidth/max)*100);
+    let foodPercent = Math.round((foodBar.clientWidth/max)*100);
+    let happyPercent = Math.round((happyBar.clientWidth/max)*100);
 
-function loadFoodWindow() {
-    overlayTitle.innerHTML = "Feed Osmoe:";
-    overlayQuest.innerHTML = "Have you completed your food motivational goal of " + foodGoal.value + " to feed Osmoe?";
-    goalContainer.style.display = "none";
-    yesBtn.style.display = "block";
-    noBtn.style.display = "block";
-    overlay.style.display = "block";
-    overlayShadow.style.display = "block";
-}
-
-function closeWindow() {
-    overlay.style.display = "none";
-    overlayShadow.style.display = "none";
-    answerContainer.style.display = "block";
-    overlayTitle.style.marginTop = "8%";
+    if(waterPercent<70 || foodPercent<70 || happyPercent<70){
+        window.defaultOsmoe = "madOsmoe.gif";
+    }
+    if(waterPercent<5||foodPercent<5||happyPercent<5||(waterPercent+foodPercent+happyPercent)/3<50){
+        window.defaultOsmoe = "Sad_withShadowX10.gif";
+    }
 }
 
 function completeGoal() {
-    var max = barContainer.clientWidth;
-    var temp;
-    if (overlayTitle.innerHTML == "Increase Happiness:" && happyBar.style.width != '100%'){
-        temp = happyBar.clientWidth;
-        temp += (max/10);
-        temp = Math.floor((temp/max)*100);
-        
-        var percent = temp + '%';
-        happyBar.style.width = percent;
-    }
+    // var max = barContainer.clientWidth;
+    // var temp;
+    // if (overlayTitle.innerHTML == "Increase Happiness:" && happyBar.style.width != '100%'){
+    //     temp = happyBar.clientWidth;
+    //     temp += (max/10);
+    //     temp = Math.floor(temp/max)*100;
+    //     var percent = temp + '%';
+    //     happyBar.style.width = percent;
+    // }
 
-    if (overlayTitle.innerHTML == "Give Osmoe Water:" && waterBar.style.width != '100%'){
-        temp = waterBar.clientWidth;
-        temp += (max/10);
-        temp = Math.floor((temp/max)*100);
-        var percent = temp + '%';
-        waterBar.style.width = percent;
-    }
+    // if (overlayTitle.innerHTML == "Give Osmoe Water:" && waterBar.style.width != '100%'){
+    //     temp = waterBar.clientWidth;
+    //     temp += (max/10);
+    //     temp = Math.floor(temp/max)*100;
+    //     var percent = temp + '%';
+    //     waterBar.style.width = percent;
+    // }
 
-    if (overlayTitle.innerHTML == "Feed Osmoe:" && foodBar.style.width != '100%'){
-        temp = foodBar.clientWidth;
-        temp += (max/10);
-        temp = Math.floor((temp/max)*100);
-        var percent = temp + '%';
-        foodBar.style.width = percent;
-    }
+    // if (overlayTitle.innerHTML == "Feed Osmoe:" && foodBar.style.width != '100%'){
+    //     temp = foodBar.clientWidth;
+    //     temp += (max/10);
+    //     temp = Math.floor(temp/max)*100;
+    //     var percent = temp + '%';
+    //     foodBar.style.width = percent;
+    // }
     overlay.style.display = "none";
     overlayShadow.style.display = "none";
 }

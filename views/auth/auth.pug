@@ -4,12 +4,14 @@ block extrahead
     script(src="/static/js/views/auth/mobile_slide-menu.js")
 block body
     <div class="auth__mobile-aside">
-        <p style="color:white;">hi</p>
+        <div onclick="slow_reveal('signup')" class="auth__mobile-link">Sign-Up</div>
+        <div onclick="slow_reveal('login')" class="auth__mobile-link">Log In</div>
     </div>
     <div class="auth">
         <div class="auth__header">
             <div class="auth__mobile-header">
                 <i onclick="toggleSlideMenu()" class="auth__mobile-header-hamburger">menu</i>
+                <span class="auth__mobile-header-text">Welcome to Osmoe Sam</span>
             </div>
             <div class="auth__header-title">Welcome to Osmoe Sam</div>
 
@@ -23,7 +25,7 @@ block body
                 <div class="auth__container-getstarted-center">
                     <span>
                         <p>Use Osmoe Sam to get your daily routines knocked out!</p>
-                        <div onclick="reveal('signup')" class="auth__container-getstarted-center-button">Get Started!</div>
+                        <div onclick="slow_reveal('signup')" class="auth__container-getstarted-center-button">Sign Up Now!</div>
                     </span>
                 </div>
                 <img class="auth__container-getstarted-bottomleft" src="/static/penguin/osmoe/stationary/OsmoeSamX1024__half.png" />
@@ -35,18 +37,17 @@ block body
             <div class="auth__container-section">
             </div>
         </div>
-
+    </div>
         //-Modals----------------------------------------------------------------------------------------------------------------------------------------------------------------------------      
-        <div id="signupModal" class="auth__modals-signupModal">
-            <div class="auth__modals-signupModal-content">
-                include signup.pug 
-            </div>
+    <div id="signupModal" class="auth__modals-signupModal">
+        <div class="auth__modals-signupModal-content">
+            include signup.pug 
         </div>
+    </div>
 
-        <div id="loginModal" class="auth__modals-loginModal">
-            <div class="auth__modals-loginModal-content">
-                include login.pug
-            </div>
+    <div id="loginModal" class="auth__modals-loginModal">
+        <div class="auth__modals-loginModal-content">
+            include login.pug
         </div>
     </div>
 append extrajs
@@ -58,4 +59,14 @@ append extrajs
             | document.getElementById("loginError").style.opacity = 1;
         if signup_error
             | document.getElementById("signupError").style.opacity = 1;
-    
+    script. 
+        function slow_reveal(form){
+            if($('.auth__mobile-header-hamburger').html()=="close"){
+                $('.auth').one('transitionend', ()=>{
+                    reveal(form);
+                });
+                toggleSlideMenu();
+            } else {
+                reveal(form);
+            }
+        }

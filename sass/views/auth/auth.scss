@@ -13,31 +13,49 @@
             display: initial;
         }
         &-header{
-            @extend .auth__mobile, .w3-button;
-            float: left;
+            @extend .auth__mobile;
             padding: unset;
-            position: fixed;
-            z-index: 1;
 
+            &-text{
+                margin-left: 2rem;
+            }
             &-hamburger{
                 @extend .material-icons, .md-48;
                 color: white; 
                 vertical-align: middle;
-
+                height: cover;
+                
                 &:hover{
                     @extend .md-dark, .md-inactive;
+                    cursor: pointer;
+                }
+
+                &-buttonWrapper{
+                    background-color: none;
                 }
             }
         }
         &-aside{
+            overflow-x: hidden !important;
             z-index: -1;
             position: fixed;
             top: 0;
+            overflow: none;
             bottom: 0;
             left: 0;
-            width: 50%;
-            background-color: black;
+            width: 20rem;
+            background-color: $button-background;
             height: 100%;
+        }
+        &-link{
+            @extend .w3-button;
+            width: 100%;
+            color: white;
+            &:hover{
+                background-color: white;
+                color: black;
+                cursor: pointer;
+            }
         }
     }
     &__header{
@@ -47,7 +65,7 @@
         max-width: 90%;
 
         @include respond-to("small"){
-            position: fixed;
+            float: left;
             background-color: $global-background;
         }
         &-title{
@@ -104,9 +122,11 @@
                     font-size: 3rem;
 
                     @include respond-to("small"){
-                        font-size: 3rem;
                         padding-top: 5%;
                         padding-bottom: .7vh;
+                    }
+                    @include respond-to("large"){
+                        font-size: 4rem;
                     }
                 }
                 &-button{
@@ -125,6 +145,7 @@
     }
     &__modals{
         @extend .w3-modal;
+        color: white;
 
         &-animate{
             opacity: 0;
