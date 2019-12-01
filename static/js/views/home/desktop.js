@@ -116,13 +116,13 @@ function initialize () {
     profileWidth += ";height: " + profileHeight;
     profileBtn.setAttribute("style", profileWidth);
 
-    //Adjust statcontainer to never be too wide or tall
-    statContainerWidth = statContainer.offsetWidth;
-    statContainerHeight = statContainerWidth * 0.6;
-    statContainerWidth += "px";
-    statContainerHeight += "px";
-    statContainerWidth = "width: " + statContainerWidth + ";height: " + statContainerHeight;
-    statContainer.setAttribute("style", statContainerWidth);
+    // //Adjust statcontainer to never be too wide or tall
+    // statContainerWidth = statContainer.offsetWidth;
+    // statContainerHeight = statContainerWidth * 0.6;
+    // statContainerWidth += "px";
+    // statContainerHeight += "px";
+    // statContainerWidth = "width: " + statContainerWidth + ";height: " + statContainerHeight;
+    // statContainer.setAttribute("style", statContainerWidth);
 
 
     happyLabel.style.fontSize = (happyBtn.clientWidth * 0.09);
@@ -181,14 +181,14 @@ function adjustSize() {
     profileWidth += ";height: " + profileHeight;
     profileBtn.setAttribute("style", profileWidth);
 
-    statContainer.style.width = "35%";
-    statContainerWidth = statContainer.offsetWidth;
-    statContainerHeight = statContainerWidth * 0.6;
-    statContainerWidth += "px";
+    // statContainer.style.width = "35%";
+    // statContainerWidth = statContainer.offsetWidth;
+    // statContainerHeight = statContainerWidth * 0.6;
+    // statContainerWidth += "px";
 
-    statContainerHeight += "px";
-    statContainerWidth = "width: " + statContainerWidth + ";height: " + statContainerHeight;
-    statContainer.setAttribute("style", statContainerWidth);
+    // statContainerHeight += "px";
+    // statContainerWidth = "width: " + statContainerWidth + ";height: " + statContainerHeight;
+    // statContainer.setAttribute("style", statContainerWidth);
 
     happyLabel.style.fontSize = (happyBtn.clientWidth * 0.09);
     waterLabel.style.fontSize = (waterBtn.clientWidth * 0.09);

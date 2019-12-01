@@ -4,7 +4,7 @@ $fontColor: white;
 $btnRadius: 80px;
 
 .brianStuff {
-    background-color: $bgColor;
+    //background-color: $bgColor;
     h2 {
         margin: 13% 20% 0 0; 
         font-weight: 600;
@@ -110,9 +110,18 @@ body {
     position: fixed;
     &__input {
         @extend #container;
-        margin:13% -2% -5% -8%; 
         width: 70%; 
         height:70%;
+        display: inline-grid;
+
+        @include respond-to('small'){
+            width: 130%;
+            height: 50%;
+            margin: auto;
+            z-index: 1;
+            background-color: $bgColor;
+            position: fixed;
+        }
     }
     &__osmoe {
         @extend #container;
@@ -120,6 +129,13 @@ body {
         width: 30%;
         height: 100%;
         overflow: auto;
+
+        @include respond-to('small'){
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            position: relative;
+        }
     }
     &__stat {
         @extend #container;
@@ -129,6 +145,12 @@ body {
         background: #5E7989;
         color: $fontColor;
         overflow: auto;
+        @include respond-to('small'){
+            width:60%;
+            height: auto;
+            position: relative;
+            margin:0 0 2% 10%;
+        }
     }
     &__happy {
         margin: 5% 0 17% 5%;
@@ -145,6 +167,13 @@ body {
         height: 60%;
         margin:10% 0 0 10%;
         color: $fontColor; 
+        @include respond-to('small'){
+            height: auto;
+            width:100%;
+            margin: 0;
+            bottom: 50%;
+            display: flex;
+        }
     }
     &__answer {
         width: 70%;
@@ -162,6 +191,9 @@ body {
     color: $fontColor;
     font-size: 50px;
     font-weight: 600;
+    @include respond-to('small'){
+        z-index: 2;
+    }
 }
 #label {
     &__happy {
@@ -299,20 +331,32 @@ body {
             background: black;
             
         }
+        @include respond-to('small'){
+            z-index: 2;
+        }
     }
     &__happy {
         @extend #button;
         display: flex;
         margin: 0 5% 5% 0;
         vertical-align: middle;
+        @include respond-to('small'){
+            margin: auto;
+        }
     }
     &__water {
         @extend #button;
         margin: 0 5% 5% 0;
+        @include respond-to('small'){
+            margin: auto;
+        }
     }
     &__food {
         @extend #button;
         margin: 0 5% 5% 0;
+        @include respond-to('small'){
+            margin: auto;
+        }
     }
     &__no {
         @extend #button;
@@ -337,6 +381,14 @@ body {
     width: 55%;
     position: absolute;
     z-index: 1;
+
+    @include respond-to('small'){
+        width: 14rem;
+        position: relative;
+        z-index: 3;
+        right: 50%;
+        bottom: -70%;
+    }
     &__background {
         width: 100%;
         height: 100%;
@@ -354,6 +406,10 @@ body {
         position: fixed;
         overflow: auto;
         text-align: center;
+
+        @include respond-to('small'){
+            width: unset;
+        }
     }
 }
 
@@ -362,13 +418,30 @@ body {
     position: relative;
     margin-bottom: -400px;
     text-align: center;
-
+    @include respond-to('small'){
+        right: 20rem;
+    }
 }
 
 #window {
     height: 97%;
     position: relative;
     margin-top: -568px;
+}
+
+#statsnbuttons{
+    @include respond-to('small'){
+        width:100%;
+        height: 75%;
+        display: flex;
+    }
+
+    &-header{
+        @include respond-to('small'){
+            width:100%;
+            height:25%;
+        }
+    }
 }
 
 ::-webkit-scrollbar {
