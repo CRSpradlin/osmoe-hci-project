@@ -148,14 +148,15 @@ function initialize () {
     exitBtn.addEventListener("click", closeWindow, false);
     document.getElementsByTagName("BODY")[0].onresize = function() {adjustSize()};
 
-    happyGoal.addEventListener("blur", addHappyGoal, false);
-    happyGoal.addEventListener("focus", editHappyGoal, false);
+    // happyGoal.addEventListener("blur", addHappyGoal, false);
+    // happyGoal.addEventListener("focus", editHappyGoal, false);
 
-    waterGoal.addEventListener("blur", addWaterGoal, false);
-    waterGoal.addEventListener("focus", editWaterGoal, false);
+    // waterGoal.addEventListener("blur", addWaterGoal, false);
+    // waterGoal.addEventListener("focus", editWaterGoal, false);
 
-    foodGoal.addEventListener("blur", addFoodGoal, false);
-    foodGoal.addEventListener("focus", editFoodGoal, false);
+    // foodGoal.addEventListener("blur", addFoodGoal, false);
+    // foodGoal.addEventListener("focus", editFoodGoal, false);
+    adjustSize();
 
 }
 
@@ -178,9 +179,9 @@ function adjustSize() {
     // statContainerWidth = "width: " + statContainerWidth + ";height: " + statContainerHeight;
     // statContainer.setAttribute("style", statContainerWidth);
 
-    happyBtn.style.fontSize = (happyBtn.clientWidth * 0.09);
-    waterBtn.style.fontSize = (waterBtn.clientWidth * 0.09);
-    foodBtn.style.fontSize = (foodBtn.clientWidth * 0.09);
+    happyBtn.style.fontSize = (happyBtn.clientWidth * 0.1);
+    waterBtn.style.fontSize = (waterBtn.clientWidth * 0.1);
+    foodBtn.style.fontSize = (foodBtn.clientWidth * 0.1);
 
     happyArrow.style.width = (screen.width * 0.043);
     waterArrow.style.width = (screen.width * 0.043);
