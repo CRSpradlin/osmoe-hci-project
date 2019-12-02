@@ -1,4 +1,3 @@
-
 extends base.pug
 
 block title
@@ -11,12 +10,12 @@ block body
     #overlay
       #exit
         i(id='exit')='close'
-      h1(id='overlay__title')
-      h3(id='overlay__question')
+      div(id='overlay__title')
+      div(id='overlay__question')
       #container__answer
         form(id="dateForm" action="/dateUpdate" method="POST")
           input(type="text" id="dateToUpdate" name="dateToUpdate" style="display:none;")
-          input.button__yes.label__answer(type="submit" id='yesBtn' value="Yes")
+          input(class="label__answer button__yes" type="submit" id='yesBtn' value="Yes")
           #button__no
             .label__answer(id='noBtn') No
       #goal__container
@@ -35,18 +34,20 @@ block body
         #button__profile
           img(src="/static/images/views/home/defaultProfilePic.png" id='profilePic')
         #messageContainer
-          h1(id='message')= "Osmoe's Daily Inspirational Quote:"  
+          h1(id='message')= "Osmoe's Daily Inspirational Quote:\n"
+            br
+            span(id="quote")='"Just because someone calls me a bird does not mean I have to be good at flying, I choose what and who I am."'  
       #statsnbuttons
         #container__upgradeBtns
-          #button__happy 
-            img(src="/static/images/views/home/upArrow.svg" id="arrow__happy")
-            h2(id='label__happy')= "Increase Happiness"
-          #button__water
-            img(src="/static/images/views/home/upArrow.svg" id="arrow__water")
-            h2(id='label__water')= "Give Osmoe Water"
-          #button__food
-            img(src="/static/images/views/home/upArrow.svg" id="arrow__food")
-            h2(id='label__food')= "Feed Osmoe"
+          <button id='button__happy'>
+            <img src="/static/images/views/home/upArrow.svg" id='arrow__happy'>Increase Happiness
+          </button>
+          <button id='button__water'>
+            <img src="/static/images/views/home/upArrow.svg" id='arrow__water'>Give Osmoe Water
+          </button>
+          <button id='button__food'>
+            <img src="/static/images/views/home/upArrow.svg" id='arrow__food'>Give Osmoe Food
+          </button>
         #container__stat
           h1(id='label__status')= "Osmoe's Status:"
           #container__happy

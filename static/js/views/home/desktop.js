@@ -7,9 +7,6 @@ var waterGoal;
 var foodGoal;
 
 var statusLabel;
-var happyLabel;
-var waterLabel;
-var foodLabel;
 var message;
 var h3
 
@@ -29,9 +26,6 @@ var waterBtn;
 var foodBtn;
 var yesBtn;
 var noBtn;
-// var happyARBtn;
-// var waterARBtn;
-// var foodARbtn;
 var exitBtn;
 
 var overlayShadow;
@@ -57,9 +51,6 @@ function initialize () {
     foodGoal = document.getElementById("goal__food");
     
     //load labels
-    happyLabel = document.getElementById("label__happy");
-    waterLabel = document.getElementById("label__water");
-    foodLabel = document.getElementById("label__food");
     statusLabel = document.getElementById("label__status");
     message = document.getElementById("message");
     h3 = document.getElementsByTagName('h3');
@@ -94,9 +85,6 @@ function initialize () {
     yesBtn = document.getElementById("yesBtn");
     noBtn = document.getElementById("button__no");
     exitBtn = document.getElementById("exit");
-    // happyARBtn = document.getElementById("addRemove__happy");
-    // waterARBtn = document.getElementById("addRemove__water");
-    // foodARBtn = document.getElementById("addRemove__food");
 
     //load overlay elements
     overlayShadow = document.getElementById("overlay__shadow");
@@ -124,14 +112,9 @@ function initialize () {
     // statContainerWidth = "width: " + statContainerWidth + ";height: " + statContainerHeight;
     // statContainer.setAttribute("style", statContainerWidth);
 
-
-    happyLabel.style.fontSize = (happyBtn.clientWidth * 0.09);
-    waterLabel.style.fontSize = (waterBtn.clientWidth * 0.09);
-    foodLabel.style.fontSize = (foodBtn.clientWidth * 0.09);
-
-    happyLabel.style.paddingTop = ((happyBtn.clientHeight * 0.75 - happyLabel.clientHeight) / 2);
-    waterLabel.style.paddingTop = ((waterBtn.clientHeight - (waterBtn.clientHeight * 0.1)- waterLabel.clientHeight) / 2 + "%");
-    foodLabel.style.paddingTop = (foodBtn.clientHeight * 0.15 + "px");
+    happyBtn.style.fontSize = (happyBtn.clientWidth * 0.09);
+    waterBtn.style.fontSize = (waterBtn.clientWidth * 0.09);
+    foodBtn.style.fontSize = (foodBtn.clientWidth * 0.09);
     
     happyArrow.style.width = (screen.width * 0.043);
     waterArrow.style.width = (screen.width * 0.043);
@@ -158,16 +141,22 @@ function initialize () {
     osmoe.style.height = osmoe.clientWidth;
     backgroundImage.style.marginBottom = "-70%";
 
-    console.log(document.getElementsByTagName("BODY")[0].clientWidth + ", " + document.getElementsByTagName("BODY")[0].clientHeight);
-
-
     //add listeners to buttons
     profileBtn.addEventListener("click", loadProfileWindow, false);
     yesBtn.addEventListener("click", completeGoal, false);
-    // happyARBtn.addEventListener("click", addHappyGoal, false);
-    // waterARBtn.addEventListener("click", addWaterGoal, false);
-    // foodARBtn.addEventListener("click", addFoodGoal, false);
+    noBtn.addEventListener("click", closeWindow, false);
+    exitBtn.addEventListener("click", closeWindow, false);
     document.getElementsByTagName("BODY")[0].onresize = function() {adjustSize()};
+
+    // happyGoal.addEventListener("blur", addHappyGoal, false);
+    // happyGoal.addEventListener("focus", editHappyGoal, false);
+
+    // waterGoal.addEventListener("blur", addWaterGoal, false);
+    // waterGoal.addEventListener("focus", editWaterGoal, false);
+
+    // foodGoal.addEventListener("blur", addFoodGoal, false);
+    // foodGoal.addEventListener("focus", editFoodGoal, false);
+    adjustSize();
 
 }
 
@@ -190,9 +179,9 @@ function adjustSize() {
     // statContainerWidth = "width: " + statContainerWidth + ";height: " + statContainerHeight;
     // statContainer.setAttribute("style", statContainerWidth);
 
-    happyLabel.style.fontSize = (happyBtn.clientWidth * 0.09);
-    waterLabel.style.fontSize = (waterBtn.clientWidth * 0.09);
-    foodLabel.style.fontSize = (foodBtn.clientWidth * 0.09);
+    happyBtn.style.fontSize = (happyBtn.clientWidth * 0.1);
+    waterBtn.style.fontSize = (waterBtn.clientWidth * 0.1);
+    foodBtn.style.fontSize = (foodBtn.clientWidth * 0.1);
 
     happyArrow.style.width = (screen.width * 0.043);
     waterArrow.style.width = (screen.width * 0.043);
@@ -274,6 +263,7 @@ function loadProfileWindow() {
     noBtn.style.display = "none";
     overlay.style.display = "block";
     overlayShadow.style.display = "block";
+    overlayTitle.style.marginTop = "3%";
 }
 
 function initialGoalDecrease(waterTime, foodTime, happyTime){
