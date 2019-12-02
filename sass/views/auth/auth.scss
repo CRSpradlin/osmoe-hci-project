@@ -137,10 +137,25 @@
             }
         }
         &-section{
+            @extend .w3-round-large;
             width: 100%;
             margin-bottom: 5%;
             min-height: 20rem;
             background-color: darken($global-background, 20%);
+
+            &-images{
+                width: 100%;
+                padding: 2rem;
+            }
+            &-running{
+                @extend .auth__container-section-images;
+            }
+            &-yoga{
+                @extend .auth__container-section-images;
+            }
+            &-chillin{
+                @extend .auth__container-section-images;
+            }
         }
     }
     &__modals{
